@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">KazLogoQuiz</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="play">Играть</string>
+    <string name="options">Настройки</string>
+    <string name="extra">Лплплп</string>
+    <string name="level">Уровень</string>
+    <string name="start">Начать</string>
+
+</resources>
