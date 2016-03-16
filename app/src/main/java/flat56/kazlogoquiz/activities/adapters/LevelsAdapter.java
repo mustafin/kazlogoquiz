@@ -13,7 +13,7 @@ import java.util.List;
 
 import flat56.kazlogoquiz.R;
 import flat56.kazlogoquiz.activities.LogosActivity;
-import flat56.kazlogoquiz.entities.Level;
+import flat56.kazlogoquiz.models.Level;
 
 /**
  * Created by Murat on 31.01.2015.

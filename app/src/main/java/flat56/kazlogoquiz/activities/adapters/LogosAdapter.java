@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter;
 import java.util.List;
 
 import flat56.kazlogoquiz.R;
-import flat56.kazlogoquiz.entities.Logo;
+import flat56.kazlogoquiz.models.Logo;
 
 /**
  * Created by Murat on 01.02.2015.

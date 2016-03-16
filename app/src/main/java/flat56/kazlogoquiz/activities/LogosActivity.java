@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 import flat56.kazlogoquiz.R;
 import flat56.kazlogoquiz.activities.adapters.LogosAdapter;
-import flat56.kazlogoquiz.entities.Logo;
+import flat56.kazlogoquiz.models.Logo;
 
 /**
  * Created by Murat on 31.01.2015.
