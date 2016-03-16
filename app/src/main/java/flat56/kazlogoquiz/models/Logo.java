@@ -10,22 +10,25 @@ public class Logo {
     private String correctKz;
     private String charsRu;
     private String charsKz;
+    private String description;
     private int points;
 
-    public Logo(String path, String correctRu, String correctKz, String charsRu, String charsKz) {
+    public Logo(String path, String correctRu, String correctKz, String charsRu, String charsKz, String description) {
         this.path = path;
         this.correctRu = correctRu;
         this.correctKz = correctKz;
         this.charsRu = charsRu;
         this.charsKz = charsKz;
+        this.description = description;
     }
 
-    public Logo(String path, String correctRu, String correctKz, String charsRu, String charsKz, int points) {
+    public Logo(String path, String correctRu, String correctKz, String charsRu, String charsKz, String description, int points) {
         this.path = path;
         this.correctRu = correctRu;
         this.correctKz = correctKz;
         this.charsRu = charsRu;
         this.charsKz = charsKz;
+        this.description = description;
         this.points = points;
     }
 
@@ -77,5 +80,13 @@ public class Logo {
 
     public void setPoints(int points) {
         this.points = points;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

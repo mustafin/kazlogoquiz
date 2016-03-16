@@ -47,4 +47,9 @@ public class LevelsAdapter extends ArrayAdapter<Level>{
 
         return convertView;
     }
+
+    @Override
+    public Level getItem(int position) {
+        return levels.get(position);
+    }
 }

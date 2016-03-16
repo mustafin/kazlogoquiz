@@ -7,6 +7,7 @@ import android.widget.ListView;
 
 import java.util.Arrays;
 
+import flat56.kazlogoquiz.Dummy;
 import flat56.kazlogoquiz.R;
 import flat56.kazlogoquiz.activities.adapters.LevelsAdapter;
 import flat56.kazlogoquiz.models.Level;
@@ -24,12 +25,14 @@ public class LevelsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.levels);
 
-        adapter = new LevelsAdapter(this, R.layout.row, Arrays.asList(new Level(), new Level(), new Level()));
+        adapter = new LevelsAdapter(this, R.layout.row, Dummy.levelList);
         list = (ListView)findViewById(R.id.list);
         list.setAdapter(adapter);
 
         list.setOnItemClickListener((parent, view, position, id) -> {
             Intent intent = new Intent(LevelsActivity.this, LogosActivity.class);
+            Level item = adapter.getItem(position);
+            intent.putExtra(LogosActivity.ITEM_EXTRA, item.getId());
             startActivity(intent);
         });
 
