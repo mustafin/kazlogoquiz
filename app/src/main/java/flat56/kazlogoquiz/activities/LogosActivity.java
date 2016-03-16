@@ -1,17 +1,14 @@
-package shapalakmedia.kazlogoquiz.activities;
+package flat56.kazlogoquiz.activities;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.view.View;
 import android.widget.GridView;
 
 import java.util.Arrays;
 
-import shapalakmedia.kazlogoquiz.R;
-import shapalakmedia.kazlogoquiz.activities.adapters.LogosAdapter;
-import shapalakmedia.kazlogoquiz.entities.Logo;
+import flat56.kazlogoquiz.R;
+import flat56.kazlogoquiz.activities.adapters.LogosAdapter;
+import flat56.kazlogoquiz.entities.Logo;
 
 /**
  * Created by Murat on 31.01.2015.

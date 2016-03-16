@@ -1,4 +1,4 @@
-package shapalakmedia.kazlogoquiz;
+package flat56.kazlogoquiz;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

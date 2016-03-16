@@ -1,6 +1,5 @@
-package shapalakmedia.kazlogoquiz.activities.adapters;
+package flat56.kazlogoquiz.activities.adapters;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,8 +8,8 @@ import android.widget.ArrayAdapter;
 
 import java.util.List;
 
-import shapalakmedia.kazlogoquiz.R;
-import shapalakmedia.kazlogoquiz.entities.Logo;
+import flat56.kazlogoquiz.R;
+import flat56.kazlogoquiz.entities.Logo;
 
 /**
  * Created by Murat on 01.02.2015.

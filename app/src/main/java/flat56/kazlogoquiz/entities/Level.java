@@ -1,4 +1,4 @@
-package shapalakmedia.kazlogoquiz.entities;
+package flat56.kazlogoquiz.entities;
 
 /**
  * Created by Murat on 31.01.2015.

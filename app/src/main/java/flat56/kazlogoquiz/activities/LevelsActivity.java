@@ -1,4 +1,4 @@
-package shapalakmedia.kazlogoquiz.activities;
+package flat56.kazlogoquiz.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,9 +9,9 @@ import android.widget.ListView;
 
 import java.util.Arrays;
 
-import shapalakmedia.kazlogoquiz.R;
-import shapalakmedia.kazlogoquiz.activities.adapters.LevelsAdapter;
-import shapalakmedia.kazlogoquiz.entities.Level;
+import flat56.kazlogoquiz.R;
+import flat56.kazlogoquiz.activities.adapters.LevelsAdapter;
+import flat56.kazlogoquiz.entities.Level;
 
 /**
  * Created by Murat on 27.01.2015.

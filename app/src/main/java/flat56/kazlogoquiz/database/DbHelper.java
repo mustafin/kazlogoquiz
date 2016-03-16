@@ -1,4 +1,4 @@
-package shapalakmedia.kazlogoquiz.database;
+package flat56.kazlogoquiz.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
