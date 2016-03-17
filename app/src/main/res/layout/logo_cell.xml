@@ -3,13 +3,14 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <ImageView
+        android:id="@+id/logo"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_launcher"
         android:contentDescription="@string/abc_searchview_description_clear" />
     <TextView
+        android:id="@+id/points"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="text"/>
+        android:layout_height="wrap_content"/>
 </LinearLayout>

@@ -1,5 +1,10 @@
 package flat56.kazlogoquiz.models;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
+
 /**
  * Created by Murat on 31.01.2015.
  */
@@ -12,6 +17,7 @@ public class Logo {
     private String charsKz;
     private String description;
     private int points;
+    private boolean answered;
 
     public Logo(String path, String correctRu, String correctKz, String charsRu, String charsKz, String description) {
         this.path = path;
@@ -22,7 +28,8 @@ public class Logo {
         this.description = description;
     }
 
-    public Logo(String path, String correctRu, String correctKz, String charsRu, String charsKz, String description, int points) {
+    public Logo(String path, String correctRu, String correctKz,
+                String charsRu, String charsKz, String description, int points) {
         this.path = path;
         this.correctRu = correctRu;
         this.correctKz = correctKz;
@@ -74,6 +81,18 @@ public class Logo {
         this.charsKz = charsKz;
     }
 
+    public String getChars(){
+        //TODO LOCALE
+        System.out.println("asda");
+//        return Locale.getDefault()
+        return charsRu;
+    }
+
+
+    public String getCorrect(){
+        return correctRu;
+    }
+
     public int getPoints() {
         return points;
     }
@@ -88,5 +107,13 @@ public class Logo {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public boolean isAnswered() {
+        return answered;
+    }
+
+    public void setAnswered(boolean answered) {
+        this.answered = answered;
     }
 }

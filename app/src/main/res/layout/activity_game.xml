@@ -21,7 +21,7 @@
         android:layout_marginTop="@dimen/logo_cont_padding">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imageLogo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -36,11 +36,11 @@
         android:layout_below="@id/logo_cont"
         android:layout_centerHorizontal="true">
 
-        <GridLayout
+        <GridView
             android:id="@+id/answer_grid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"></GridLayout>
+            android:layout_gravity="center_horizontal"/>
     </FrameLayout>
 
     <FrameLayout
@@ -48,11 +48,11 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/game_bottom_bar">
 
-        <GridLayout
+        <GridView
             android:id="@+id/characters_grid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"></GridLayout>
+            android:layout_gravity="center_horizontal"/>
     </FrameLayout>
 
     <include

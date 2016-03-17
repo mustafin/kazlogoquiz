@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -31,7 +33,16 @@ public class LogosAdapter extends ArrayAdapter<Logo>{
             LayoutInflater inflater = LayoutInflater.from(context);
             convertView = inflater.inflate(R.layout.logo_cell, parent, false);
         }
+        Logo item = logos.get(position);
+        ImageView logo = (ImageView) convertView.findViewById(R.id.logo);
+        TextView difficulty = (TextView) convertView.findViewById(R.id.points);
+        difficulty.setText(item.getPoints() + "");
 
         return convertView;
+    }
+
+    @Override
+    public Logo getItem(int position) {
+        return logos.get(position);
     }
 }
