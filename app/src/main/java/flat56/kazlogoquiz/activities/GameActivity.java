@@ -28,7 +28,7 @@ public class GameActivity extends AppCompatActivity {
     private int levelPos;
     private int logoPos;
     private ImageView imageLogo;
-    private GridView answerGrid;
+    private LinearLayout answerGrid;
     private GridView charsGrid;
 
 
@@ -38,9 +38,8 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
 
         imageLogo = (ImageView) findViewById(R.id.imageLogo);
-        answerGrid = (GridView) findViewById(R.id.answer_grid);
+        answerGrid = (LinearLayout) findViewById(R.id.answer_grid);
         charsGrid = (GridView) findViewById(R.id.characters_grid);
-
 
         if(savedInstanceState != null){
             levelPos = savedInstanceState.getInt(LogosActivity.LEVEL_EXTRA);
@@ -62,9 +61,7 @@ public class GameActivity extends AppCompatActivity {
     public void fillData(){
         imageLogo.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_launcher));
         AnswerGridAdapter adapter = new AnswerGridAdapter(this, logo.getChars());
-        answerGrid.setAdapter(adapter);
-
-
+        adapter.addTo(answerGrid);
 
 
 

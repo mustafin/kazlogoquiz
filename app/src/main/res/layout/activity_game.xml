@@ -36,11 +36,12 @@
         android:layout_below="@id/logo_cont"
         android:layout_centerHorizontal="true">
 
-        <GridView
+        <LinearLayout
             android:id="@+id/answer_grid"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"/>
+            android:orientation="vertical"/>
+
     </FrameLayout>
 
     <FrameLayout
