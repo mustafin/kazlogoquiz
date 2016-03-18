@@ -5,4 +5,5 @@
     <dimen name="logo_cont_padding">5dp</dimen>
     <dimen name="top_nav_height">40dp</dimen>
     <dimen name="game_bottom_bar_height">100dp</dimen>
+    <dimen name="game_button_width">50dp</dimen>
 </resources>
