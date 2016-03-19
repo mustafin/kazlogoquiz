@@ -50,6 +50,9 @@ public class GameActivity extends AppCompatActivity {
 
         answerGrid = new AnswerGrid(this, logo.getCorrect());
         characterGridAdapter = new CharacterGridAdapter(this, charsGrid, logo.getChars(), 0);
+        characterGridAdapter.setAnswerGrid(answerGrid);
+        answerGrid.setCharacterGridAdapter(characterGridAdapter);
+
         charsGrid.setAdapter(characterGridAdapter);
 
         fillData();

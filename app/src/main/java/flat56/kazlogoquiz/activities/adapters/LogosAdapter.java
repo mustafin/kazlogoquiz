@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
+import java.util.Locale;
 
 import flat56.kazlogoquiz.R;
 import flat56.kazlogoquiz.models.Logo;
@@ -36,7 +37,7 @@ public class LogosAdapter extends ArrayAdapter<Logo>{
         Logo item = logos.get(position);
         ImageView logo = (ImageView) convertView.findViewById(R.id.logo);
         TextView difficulty = (TextView) convertView.findViewById(R.id.points);
-        difficulty.setText(item.getPoints() + "");
+        difficulty.setText(String.format(Locale.getDefault(), "%d", item.getPoints()));
 
         return convertView;
     }

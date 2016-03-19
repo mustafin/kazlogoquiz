@@ -3,6 +3,7 @@ package flat56.kazlogoquiz.utils;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by MusMB on 17.03.2016.
@@ -26,6 +27,5 @@ public class MyUtils {
         }
         return count;
     }
-
 
 }

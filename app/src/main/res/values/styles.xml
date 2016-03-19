@@ -5,4 +5,17 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <!-- Progress Bar -->
+    <style name="CustomProgressBarHorizontal" parent="android:Widget.ProgressBar.Horizontal">
+        <item name="android:progressDrawable">@drawable/my_progress</item>
+        <item name="android:minHeight">7dip</item>
+        <item name="android:maxHeight">10dip</item>
+    </style>
+
+    <style name="RowTitle">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">16sp</item>
+
+    </style>
+
 </resources>

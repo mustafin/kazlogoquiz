@@ -1,7 +1,6 @@
 package flat56.kazlogoquiz.activities.adapters;
 
 import android.content.Context;
-import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
@@ -13,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import flat56.kazlogoquiz.R;
+import flat56.kazlogoquiz.activities.views.AnswerGrid;
+import flat56.kazlogoquiz.utils.ViewIdGenerator;
 
 /**
  * Created by MusMB on 18.03.2016.
@@ -20,10 +21,11 @@ import flat56.kazlogoquiz.R;
 public class CharacterGridAdapter extends BaseAdapter {
 
     private Context context;
-    private List<Button> buttonList;
+//    private List<Button> buttonList;
     private List<Character> characterList;
     private String chars;
     private int GAME_BUTTON_WIDTH = 0;
+    private AnswerGrid answerGrid;
 
     private int rows = 0;
     private GridView gridView;
@@ -34,7 +36,7 @@ public class CharacterGridAdapter extends BaseAdapter {
         this.chars = chars;
         this.rows = rows;
         this.GAME_BUTTON_WIDTH = (int) context.getResources().getDimension(R.dimen.game_button_width);
-        this.buttonList = new ArrayList<>(20);
+//        this.buttonList = new ArrayList<>(20);
         this.characterList = new ArrayList<>(15);
         for (int i = 0; i < chars.length(); i++) {
             characterList.add(chars.charAt(i));
@@ -69,22 +71,49 @@ public class CharacterGridAdapter extends BaseAdapter {
         View view;
         if (c == '-') {
             view = new View(context);
-            view.setLayoutParams(new LayoutParams(GAME_BUTTON_WIDTH, LayoutParams.WRAP_CONTENT));
-        }else{
+            view.setLayoutParams(new LayoutParams(GAME_BUTTON_WIDTH, GAME_BUTTON_WIDTH));
+
+        } else {
             Button b = new Button(context);
-            b.setLayoutParams(new LayoutParams(GAME_BUTTON_WIDTH, LayoutParams.WRAP_CONTENT));
+            b.setId(ViewIdGenerator.generateViewId());
+            b.setLayoutParams(new LayoutParams(GAME_BUTTON_WIDTH, GAME_BUTTON_WIDTH));
             b.setText(c.toString());
-            buttonList.add(b);
-
-
-            b.setOnClickListener(v -> {
-
-                characterList.set(position, '-');
-                notifyDataSetChanged();
-            });
+//            buttonList.add(b);
             view = b;
+            b.setOnClickListener(buttonClick(position, b));
         }
 
         return view;
+    }
+
+//    @Override
+//    public void notifyDataSetChanged() {
+//        buttonList.clear();
+//        super.notifyDataSetChanged();
+//    }
+
+    public View.OnClickListener buttonClick(int position, Button button) {
+        return v -> {
+            if (answerGrid.canSwap(button)) {
+                characterList.set(position, '-');
+                notifyDataSetChanged();
+                ViewGroup parent = (ViewGroup) button.getParent();
+                parent.removeViewInLayout(button);
+                answerGrid.addButton(button, position);
+            }
+        };
+    }
+
+    public void setButton(int position, Button b) {
+        characterList.set(position, b.getText().charAt(0));
+        notifyDataSetChanged();
+    }
+
+    public AnswerGrid getAnswerGrid() {
+        return answerGrid;
+    }
+
+    public void setAnswerGrid(AnswerGrid answerGrid) {
+        this.answerGrid = answerGrid;
     }
 }

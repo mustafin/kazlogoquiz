@@ -83,7 +83,6 @@ public class Logo {
 
     public String getChars(){
         //TODO LOCALE
-        System.out.println("asda");
 //        return Locale.getDefault()
         return charsRu;
     }

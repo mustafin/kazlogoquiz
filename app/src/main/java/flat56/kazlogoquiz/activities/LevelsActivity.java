@@ -15,8 +15,8 @@ import flat56.kazlogoquiz.activities.adapters.LevelsAdapter;
  */
 public class LevelsActivity extends AppCompatActivity {
 
-    ListView list;
-    LevelsAdapter adapter;
+    private ListView list;
+    private LevelsAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,11 +29,9 @@ public class LevelsActivity extends AppCompatActivity {
 
         list.setOnItemClickListener((parent, view, position, id) -> {
             Intent intent = new Intent(LevelsActivity.this, LogosActivity.class);
-            Log.i("ASD", position+"");
             intent.putExtra(LogosActivity.LEVEL_EXTRA, position);
             startActivity(intent);
         });
-
 
     }
 }
