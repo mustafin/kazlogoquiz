@@ -12,7 +12,8 @@
         android:layout_height="@dimen/row_header"
         android:layout_alignParentTop="true"
         android:padding="10dp"
-        android:background="@drawable/row_header_bg">
+        android:background="@drawable/row_header_bg"
+        android:id="@+id/relativeLayout">
 
         <TextView
             android:id="@+id/levelTitle"
@@ -20,6 +21,7 @@
             android:textAppearance="@style/RowTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="New Text"
             />
 
         <ProgressBar
@@ -42,19 +44,38 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:textColor="#ffffff" />
+            android:textColor="@color/white" />
     </RelativeLayout>
 
     <Button
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:id="@+id/start"
         android:focusable="false"
         android:clickable="false"
         android:text="@string/play"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentRight="false"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        />
+        android:drawableEnd="@drawable/ic_chevron_right"
+        android:drawableRight="@drawable/ic_chevron_right"
+        android:paddingLeft="@dimen/logo_cont_padding"
+        android:paddingStart="@dimen/logo_cont_padding"
+        android:paddingRight="@dimen/logo_cont_padding"
+        android:paddingEnd="@dimen/logo_cont_padding"
+        style="@style/RowPlayButton"
+        android:layout_below="@+id/relativeLayout" />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/imageView"
+        android:layout_below="@id/relativeLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_margin="5dp"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        android:src="@drawable/icon_tenge" />
 
 </RelativeLayout>
