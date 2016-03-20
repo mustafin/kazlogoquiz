@@ -1,12 +1,14 @@
 package flat56.kazlogoquiz.activities.adapters;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +26,7 @@ public class CharacterGridAdapter extends BaseAdapter {
 //    private List<Button> buttonList;
     private List<Character> characterList;
     private String chars;
-    private int GAME_BUTTON_WIDTH = 0;
+    private int GAME_BUTTON_SIZE = 0;
     private AnswerGrid answerGrid;
 
     private int rows = 0;
@@ -35,7 +37,7 @@ public class CharacterGridAdapter extends BaseAdapter {
         this.gridView = gridView;
         this.chars = chars;
         this.rows = rows;
-        this.GAME_BUTTON_WIDTH = (int) context.getResources().getDimension(R.dimen.game_button_width);
+        this.GAME_BUTTON_SIZE = (int) context.getResources().getDimension(R.dimen.game_button_width);
 //        this.buttonList = new ArrayList<>(20);
         this.characterList = new ArrayList<>(15);
         for (int i = 0; i < chars.length(); i++) {
@@ -71,12 +73,16 @@ public class CharacterGridAdapter extends BaseAdapter {
         View view;
         if (c == '-') {
             view = new View(context);
-            view.setLayoutParams(new LayoutParams(GAME_BUTTON_WIDTH, GAME_BUTTON_WIDTH));
+            view.setLayoutParams(new LayoutParams(GAME_BUTTON_SIZE, GAME_BUTTON_SIZE));
 
         } else {
             Button b = new Button(context);
+            b.setBackground(ContextCompat.getDrawable(context, R.drawable.game_char_but_selector));
             b.setId(ViewIdGenerator.generateViewId());
-            b.setLayoutParams(new LayoutParams(GAME_BUTTON_WIDTH, GAME_BUTTON_WIDTH));
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(GAME_BUTTON_SIZE, GAME_BUTTON_SIZE);
+            params.setMargins(10, 0, 0, 10);
+
+            b.setLayoutParams(params);
             b.setText(c.toString());
 //            buttonList.add(b);
             view = b;

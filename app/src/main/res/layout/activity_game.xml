@@ -13,13 +13,65 @@
         android:layout_marginBottom="@dimen/logo_cont_padding"
         android:layout_marginTop="@dimen/logo_cont_padding">
 
+        <ImageButton
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_toLeftOf="@+id/imageLogo"
+            android:layout_toStartOf="@+id/imageLogo"
+            android:layout_marginRight="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/main_circle_but_selector"
+            />
+        <ImageButton
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_toLeftOf="@+id/imageLogo"
+            android:layout_toStartOf="@+id/imageLogo"
+            android:layout_marginRight="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="90dp"
+            android:background="@drawable/main_circle_but_selector"
+            />
+
         <ImageView
             android:id="@+id/imageLogo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/ic_launcher" />
+            android:src="@drawable/logo_temp" />
+
+
+        <ImageButton
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_toRightOf="@+id/imageLogo"
+            android:layout_toEndOf="@+id/imageLogo"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/main_circle_but_selector"
+            />
+        <ImageButton
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_toRightOf="@+id/imageLogo"
+            android:layout_toEndOf="@+id/imageLogo"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="90dp"
+            android:background="@drawable/main_circle_but_selector"
+            />
+
+        <LinearLayout
+            android:id="@+id/points"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageLogo"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal" />
 
     </RelativeLayout>
 
@@ -46,6 +98,11 @@
             android:id="@+id/characters_grid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
+            android:padding="10dp"
+            android:clipToPadding="false"
+            android:horizontalSpacing="10dp"
+            android:verticalSpacing="10dp"
             android:layout_gravity="center_horizontal"/>
     </FrameLayout>
 

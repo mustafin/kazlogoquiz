@@ -4,11 +4,13 @@
     <!-- Main Colors -->
     <color name="white">#ffffff</color>
     <color name="main_blue">#00A8F1</color>
-    <color name="main_grey">#ff9d9e9d</color>
+    <color name="main_grey">#7d7e7d</color>
     <color name="main_red">#C43C32</color>
     <color name="main_yellow">#FED000</color>
     <color name="main_green">#00A878</color>
     <color name="main_green_opac">#dd00A878</color>
     <color name="main_violet">#FF3769</color>
+    <color name="light_grey">#ccc</color>
+    <color name="progress_grey">#aa9d9e9d</color>
 
 </resources>

@@ -138,8 +138,8 @@ public class AnswerGrid {
     private View emptyView(){
         View v = new View(context);
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(GAME_BUTTON_WIDTH, GAME_BUTTON_WIDTH);
-//                    layoutParams.setMargins(10, 0, 0, 10);
-        v.setPadding(10, 0, 0, 10);
+                    layoutParams.setMargins(10, 0, 0, 10);
+//        v.setPadding(10, 0, 0, 10);
         v.setLayoutParams(layoutParams);
         v.setBackground(ContextCompat.getDrawable(context, R.drawable.button_stub_bg));
         return v;

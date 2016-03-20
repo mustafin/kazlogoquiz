@@ -27,6 +27,7 @@ public class GameActivity extends AppCompatActivity {
     private GridView charsGrid;
     private AnswerGrid answerGrid;
     private CharacterGridAdapter characterGridAdapter;
+    private LinearLayout points;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +43,7 @@ public class GameActivity extends AppCompatActivity {
         imageLogo = (ImageView) findViewById(R.id.imageLogo);
         answerGridCont = (LinearLayout) findViewById(R.id.answer_grid);
         charsGrid = (GridView) findViewById(R.id.characters_grid);
-
+        points = (LinearLayout) findViewById(R.id.points);
 
         if(savedInstanceState != null){
             levelPos = savedInstanceState.getInt(LogosActivity.LEVEL_EXTRA);
@@ -69,7 +70,15 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void fillData(){
-        imageLogo.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_launcher));
+        imageLogo.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.logo_temp));
+        for (int i = 0; i < logo.getPoints(); i++) {
+            ImageView view = new ImageView(this);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            params.setMargins(5, 0, 0, 5);
+            view.setLayoutParams(params);
+            view.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.icon_tenge_small));
+            points.addView(view);
+        }
         answerGrid.initAndaddTo(answerGridCont);
 
 

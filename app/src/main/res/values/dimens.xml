@@ -7,7 +7,7 @@
 
     <!-- Game Activity -->
     <dimen name="game_bottom_bar_height">100dp</dimen>
-    <dimen name="game_button_width">50dp</dimen>
+    <dimen name="game_button_width">35dp</dimen>
 
 
     <!-- Level Row -->
