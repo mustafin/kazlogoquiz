@@ -7,8 +7,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:divider="@null"
-        android:dividerHeight="10dp"
-        android:paddingRight="10dp"
-        android:paddingLeft="10dp" />
+        android:dividerHeight="@dimen/list_padding"
+        android:paddingRight="@dimen/list_padding"
+        android:paddingLeft="@dimen/list_padding" />
 
 </LinearLayout>

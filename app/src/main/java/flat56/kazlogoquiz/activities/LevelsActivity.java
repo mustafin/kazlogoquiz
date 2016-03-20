@@ -2,8 +2,11 @@ package flat56.kazlogoquiz.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.ListView;
 
 import flat56.kazlogoquiz.Dummy;
@@ -22,6 +25,12 @@ public class LevelsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.levels);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
+
 
         adapter = new LevelsAdapter(this, R.layout.row, Dummy.levelList);
         list = (ListView)findViewById(R.id.list);
@@ -33,5 +42,16 @@ public class LevelsActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

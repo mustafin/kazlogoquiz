@@ -1,11 +1,14 @@
 package flat56.kazlogoquiz.activities.adapters;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -36,8 +39,18 @@ public class LogosAdapter extends ArrayAdapter<Logo>{
         }
         Logo item = logos.get(position);
         ImageView logo = (ImageView) convertView.findViewById(R.id.logo);
-        TextView difficulty = (TextView) convertView.findViewById(R.id.points);
-        difficulty.setText(String.format(Locale.getDefault(), "%d", item.getPoints()));
+        LinearLayout difficulty = (LinearLayout) convertView.findViewById(R.id.points);
+        int points = item.getPoints();
+        if(difficulty.getChildCount() == 0) {
+            for (int i = 0; i < points; i++) {
+                ImageView view = new ImageView(context);
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                params.setMargins(5, 5, 5, 5);
+                view.setLayoutParams(params);
+                view.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.icon_tenge_small));
+                difficulty.addView(view);
+            }
+        }
 
         return convertView;
     }

@@ -18,7 +18,7 @@ import flat56.kazlogoquiz.models.Level;
 /**
  * Created by Murat on 31.01.2015.
  */
-public class LevelsAdapter extends ArrayAdapter<Level>{
+public class LevelsAdapter extends ArrayAdapter<Level> {
 
     private List<Level> levels;
     private Context context;
@@ -31,18 +31,25 @@ public class LevelsAdapter extends ArrayAdapter<Level>{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if(convertView == null){
-            LayoutInflater inflater = ((Activity)context).getLayoutInflater();
+        if (convertView == null) {
+            LayoutInflater inflater = ((Activity) context).getLayoutInflater();
             convertView = inflater.inflate(R.layout.row, parent, false);
         }
 
         Level level = levels.get(position);
         TextView title = (TextView) convertView.findViewById(R.id.levelTitle);
         ProgressBar progress = (ProgressBar) convertView.findViewById(R.id.progressBar);
+        TextView progressText = (TextView) convertView.findViewById(R.id.progressText);
 
         String levelString = context.getResources().getString(R.string.level);
         title.setText(String.format(Locale.getDefault(), "%s %d", levelString, level.getId()));
         progress.setProgress(level.getLogosFound() * 100 / level.getLogosCount());
+        progressText.setText(String.format(
+                Locale.getDefault(),
+                "%d / %d",
+                level.getLogosFound(),
+                level.getLogosCount())
+        );
         return convertView;
     }
 

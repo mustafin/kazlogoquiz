@@ -2,7 +2,10 @@ package flat56.kazlogoquiz.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.widget.GridView;
 import android.widget.Toast;
 
@@ -26,6 +29,10 @@ public class LogosActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.logos);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         if(savedInstanceState != null){
             itemPos = savedInstanceState.getInt(LEVEL_EXTRA);
@@ -62,5 +69,17 @@ public class LogosActivity extends AppCompatActivity{
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         itemPos = savedInstanceState.getInt(LEVEL_EXTRA);
+        curLevel = Dummy.levelList.get(itemPos);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
