@@ -30,7 +30,6 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:22.2.0'
-    compile 'info.hoang8f:fbutton:1.0.5'
     compile 'com.annimon:stream:1.0.8'
     compile 'com.google.code.gson:gson:2.4'
 }

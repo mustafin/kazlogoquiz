@@ -26,5 +26,10 @@
 
     </style>
 
+    <style name="MainPlayBut">
+        <item name="android:background">@drawable/main_play_but</item>
+        <item name="android:fontFamily">sans-serif-thin</item>
+    </style>
+
 
 </resources>
