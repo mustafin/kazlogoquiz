@@ -24,11 +24,11 @@ public class Dummy {
 
 
     public static Level[] levels = {
-        new Level(1, 40, 23, 40, logoList),
-        new Level(2, 40, 13, 40, logoList),
-        new Level(3, 33, 5, 33, logoList),
-        new Level(4, 40, 26, 40, logoList),
-        new Level(5, 40, 38, 40, logoList),
+        new Level(1, 40, 23, 40, true, logoList),
+        new Level(2, 40, 13, 40, false, logoList),
+        new Level(3, 33, 5, 33, false, logoList),
+        new Level(4, 40, 26, 40, false, logoList),
+        new Level(5, 40, 38, 40, false, logoList),
     };
 
     public static List<Level> levelList = new ArrayList<>(Arrays.asList(levels));

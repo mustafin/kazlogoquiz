@@ -12,20 +12,23 @@ public class Level {
     private int points;
     private int logosFound;
     private int logosCount;
+    private boolean opened;
     private List<Logo> logos;
 
-    public Level(int id, int points, int logosFound, int logosCount) {
+    public Level(int id, int points, int logosFound, int logosCount, boolean opened) {
         this.id = id;
         this.points = points;
         this.logosFound = logosFound;
         this.logosCount = logosCount;
+        this.opened = opened;
     }
 
-    public Level(int id, int points, int logosFound, int logosCount, List<Logo> logos) {
+    public Level(int id, int points, int logosFound, int logosCount,  boolean opened, List<Logo> logos) {
         this.id = id;
         this.points = points;
         this.logosFound = logosFound;
         this.logosCount = logosCount;
+        this.opened = opened;
         this.logos = logos;
     }
 
@@ -71,5 +74,13 @@ public class Level {
 
     public void setLogos(List<Logo> logos) {
         this.logos = logos;
+    }
+
+    public boolean isOpened() {
+        return opened;
+    }
+
+    public void setOpened(boolean opened) {
+        this.opened = opened;
     }
 }

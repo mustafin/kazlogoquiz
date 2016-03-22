@@ -37,9 +37,11 @@ public class LevelsActivity extends AppCompatActivity {
         list.setAdapter(adapter);
 
         list.setOnItemClickListener((parent, view, position, id) -> {
-            Intent intent = new Intent(LevelsActivity.this, LogosActivity.class);
-            intent.putExtra(LogosActivity.LEVEL_EXTRA, position);
-            startActivity(intent);
+            if(adapter.getItem(position).isOpened()){
+                Intent intent = new Intent(LevelsActivity.this, LogosActivity.class);
+                intent.putExtra(LogosActivity.LEVEL_EXTRA, position);
+                startActivity(intent);
+            }
         });
 
     }
