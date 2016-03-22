@@ -6,7 +6,7 @@ android {
     buildToolsVersion "22.0.1"
     defaultConfig {
         applicationId 'flat56.kazlogoquiz'
-        minSdkVersion 16
+        minSdkVersion 14
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"

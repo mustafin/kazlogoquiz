@@ -79,7 +79,7 @@ public class GameActivity extends AppCompatActivity {
             view.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.icon_tenge_small));
             points.addView(view);
         }
-        answerGrid.initAndaddTo(answerGridCont);
+        answerGrid.initAndAddTo(answerGridCont);
 
 
     }

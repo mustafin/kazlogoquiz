@@ -92,7 +92,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/game_bottom_bar">
+        android:layout_alignParentBottom="true">
 
         <GridView
             android:id="@+id/characters_grid"
@@ -105,12 +105,5 @@
             android:verticalSpacing="10dp"
             android:layout_gravity="center_horizontal"/>
     </FrameLayout>
-
-    <include
-        android:id="@+id/game_bottom_bar"
-        layout="@layout/game_bottom_bar"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/game_bottom_bar_height"
-        android:layout_alignParentBottom="true" />
 
 </RelativeLayout>

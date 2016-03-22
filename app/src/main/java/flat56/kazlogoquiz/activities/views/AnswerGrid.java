@@ -1,12 +1,17 @@
 package flat56.kazlogoquiz.activities.views;
 
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.content.Context;
+import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.Space;
+import android.util.Property;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.view.ViewGroup.LayoutParams;
@@ -29,7 +34,7 @@ public class AnswerGrid {
     private List<LinearLayout> layoutRows;
     private String answer;
     private int rowCount;
-    private int GAME_BUTTON_WIDTH = 0;
+    private int GAME_BUTTON_SIZE = 0;
     private HashMap<Integer, Integer> map = new HashMap<>();
     private CharacterGridAdapter characterGridAdapter;
 
@@ -47,12 +52,12 @@ public class AnswerGrid {
             }
             this.charsList.add(c);
         }
-        this.GAME_BUTTON_WIDTH = (int)context.getResources().getDimension(R.dimen.game_button_width);
+        this.GAME_BUTTON_SIZE = (int)context.getResources().getDimension(R.dimen.game_button_width);
 
         layoutRows = new ArrayList<>(5);
     }
 
-    public void initAndaddTo(ViewGroup parent) {
+    public void initAndAddTo(ViewGroup parent) {
         for (List<Character> chars : charsList) {
 
             LinearLayout linearLayout = initLinearLayout();
@@ -88,6 +93,8 @@ public class AnswerGrid {
             b.setOnClickListener(view -> {
                 int positionInChars = map.get(b.getId());
 
+
+
                 View v = emptyView();
                 swapViewAt(b, v);
 
@@ -96,13 +103,13 @@ public class AnswerGrid {
         }
     }
 
-    private boolean swapViewAt(View view, View swap){
-        ViewGroup parent = (ViewGroup) view.getParent();
+    private boolean swapViewAt(View remove, View add){
+        ViewGroup parent = (ViewGroup) remove.getParent();
         if(parent != null) {
-            int index = parent.indexOfChild(view);
+            int index = parent.indexOfChild(remove);
             if(index != -1) {
-                parent.removeView(view);
-                parent.addView(swap, index);
+                parent.removeView(remove);
+                parent.addView(add, index);
                 return true;
             }
         }
@@ -116,6 +123,12 @@ public class AnswerGrid {
                 if(!(view instanceof Button) && !(view instanceof Space)){
                     layout.removeViewAt(i);
                     layout.addView(swap, i);
+
+                    LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) swap.getLayoutParams();
+                    layoutParams.setMargins(10, 0, 0, 10);
+
+                    startAnim(swap);
+
                     return true;
                 }
             }
@@ -123,7 +136,7 @@ public class AnswerGrid {
         return false;
     }
 
-    public boolean canSwap(View swap){
+    public boolean canSwap(){
         for (LinearLayout layout : layoutRows) {
             for (int i = 0; i < layout.getChildCount(); i++) {
                 View view = layout.getChildAt(i);
@@ -137,15 +150,32 @@ public class AnswerGrid {
 
     private View emptyView(){
         View v = new View(context);
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(GAME_BUTTON_WIDTH, GAME_BUTTON_WIDTH);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(GAME_BUTTON_SIZE, GAME_BUTTON_SIZE);
                     layoutParams.setMargins(10, 0, 0, 10);
 //        v.setPadding(10, 0, 0, 10);
         v.setLayoutParams(layoutParams);
-        v.setBackground(ContextCompat.getDrawable(context, R.drawable.button_stub_bg));
+        v.setBackgroundResource(R.drawable.button_stub_bg);
         return v;
     }
 
     public void setCharacterGridAdapter(CharacterGridAdapter characterGridAdapter) {
         this.characterGridAdapter = characterGridAdapter;
     }
+
+    private void startAnim(View view){
+        AnimatorSet anim = (AnimatorSet) AnimatorInflater.loadAnimator(context, R.animator.jump_in);
+//        PropertyValuesHolder pvhX = PropertyValuesHolder.ofFloat(View.ROTATION_X, 80f);
+//
+//        PropertyValuesHolder pvhY = PropertyValuesHolder.ofFloat(View.ROTATION_X, -100f);
+//        PropertyValuesHolder pvhE = PropertyValuesHolder.ofFloat(View.ROTATION_X, 100f);
+//
+//        ObjectAnimator animator = ObjectAnimator.ofPropertyValuesHolder(view, pvhX, pvhY);
+//        animator.setProperty(Property.of());
+//        animator.start();
+
+
+        anim.setTarget(view);
+        anim.start();
+    }
+
 }

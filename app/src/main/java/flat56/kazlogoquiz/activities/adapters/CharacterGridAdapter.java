@@ -77,7 +77,7 @@ public class CharacterGridAdapter extends BaseAdapter {
 
         } else {
             Button b = new Button(context);
-            b.setBackground(ContextCompat.getDrawable(context, R.drawable.game_char_but_selector));
+            b.setBackgroundResource(R.drawable.game_char_but_selector);
             b.setId(ViewIdGenerator.generateViewId());
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(GAME_BUTTON_SIZE, GAME_BUTTON_SIZE);
             params.setMargins(10, 0, 0, 10);
@@ -100,7 +100,7 @@ public class CharacterGridAdapter extends BaseAdapter {
 
     public View.OnClickListener buttonClick(int position, Button button) {
         return v -> {
-            if (answerGrid.canSwap(button)) {
+            if (answerGrid.canSwap()) {
                 characterList.set(position, '-');
                 notifyDataSetChanged();
                 ViewGroup parent = (ViewGroup) button.getParent();

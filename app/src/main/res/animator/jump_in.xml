@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <objectAnimator
+        android:duration="100"
+        android:propertyName="rotationX"
+        android:repeatMode="reverse"
+        android:repeatCount="1"
+        android:valueTo="-60" />
+    <!--<objectAnimator-->
+        <!--android:duration="100"-->
+        <!--android:propertyName="rotationX"-->
+        <!--android:startOffset="100"-->
+        <!--android:valueTo="0" />-->
+    <objectAnimator
+        android:duration="100"
+        android:propertyName="scaleX"
+        android:repeatMode="reverse"
+        android:repeatCount="1"
+        android:valueTo="1.2f" />
+    <objectAnimator
+        android:duration="100"
+        android:propertyName="scaleY"
+        android:repeatMode="reverse"
+        android:repeatCount="1"
+        android:valueTo="1.2f" />
+</set>
