@@ -6,11 +6,6 @@
         android:repeatMode="reverse"
         android:repeatCount="1"
         android:valueTo="-60" />
-    <!--<objectAnimator-->
-        <!--android:duration="100"-->
-        <!--android:propertyName="rotationX"-->
-        <!--android:startOffset="100"-->
-        <!--android:valueTo="0" />-->
     <objectAnimator
         android:duration="100"
         android:propertyName="scaleX"
