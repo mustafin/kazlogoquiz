@@ -35,11 +35,10 @@ public class LevelsAdapter extends ArrayAdapter<Level> {
 
         if (convertView == null) {
             LayoutInflater inflater = ((Activity) context).getLayoutInflater();
-            if(level.isOpened())
+            if(getItemViewType(position) == 0)
                 convertView = inflater.inflate(R.layout.row, parent, false);
             else
                 convertView = inflater.inflate(R.layout.row_locked, parent, false);
-
         }
 
         TextView title = (TextView) convertView.findViewById(R.id.levelTitle);
@@ -59,6 +58,22 @@ public class LevelsAdapter extends ArrayAdapter<Level> {
             );
         }
         return convertView;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        // Define a way to determine which layout to use, here it's just evens and odds.
+        return isEnabled(position) ? 0 : 1;
+    }
+
+    @Override
+    public int getViewTypeCount() {
+        return 2; // Count of different layouts
+    }
+
+    @Override
+    public boolean isEnabled(int position) {
+        return levels.get(position).isOpened();
     }
 
     @Override

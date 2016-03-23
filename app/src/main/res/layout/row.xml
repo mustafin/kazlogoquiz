@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/row_width"
     android:background="@drawable/row_bg"
-    android:layout_marginTop="@dimen/list_padding">
+    android:layout_marginTop="@dimen/activity_padding">
 
     <RelativeLayout
         android:layout_width="match_parent"
