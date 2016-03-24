@@ -56,19 +56,22 @@ public class LevelsAdapter extends ArrayAdapter<Level> {
                     level.getLogosFound(),
                     level.getLogosCount())
             );
+        }else{
+            TextView guessMore = (TextView) convertView.findViewById(R.id.guess_more_text);
+            //TODO change hardcoded "left to unlock" value
+            guessMore.setText(context.getString(R.string.guess_more, 10));
         }
         return convertView;
     }
 
     @Override
     public int getItemViewType(int position) {
-        // Define a way to determine which layout to use, here it's just evens and odds.
         return isEnabled(position) ? 0 : 1;
     }
 
     @Override
     public int getViewTypeCount() {
-        return 2; // Count of different layouts
+        return 2;
     }
 
     @Override

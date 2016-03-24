@@ -9,5 +9,6 @@
     <string name="extra">Лплплп</string>
     <string name="level">Уровень</string>
     <string name="start">Начать</string>
+    <string name="guess_more">Отгадайте ещё %1$d логотипов</string>
 
 </resources>

@@ -4,20 +4,23 @@
     android:descendantFocusability="blocksDescendants"
     android:layout_width="match_parent"
     android:layout_height="@dimen/row_width"
-    android:background="@drawable/row_bg"
-    android:layout_marginTop="@dimen/activity_padding">
+    android:background="@drawable/row_bg">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/row_header"
         android:layout_alignParentTop="true"
-        android:padding="10dp"
+        android:paddingTop="@dimen/row_header_padding"
+        android:paddingLeft="@dimen/row_header_padding"
+        android:paddingStart="@dimen/row_header_padding"
+        android:paddingRight="@dimen/row_header_padding"
+        android:paddingEnd="@dimen/row_header_padding"
+        android:paddingBottom="10dp"
         android:background="@drawable/row_header_bg"
         android:id="@+id/relativeLayout">
 
         <TextView
             android:id="@+id/levelTitle"
-            android:padding="10dp"
             android:textAppearance="@style/RowTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -30,11 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="7dp"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="5dp" />
+            android:layout_centerHorizontal="true" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -47,6 +46,7 @@
     </RelativeLayout>
 
     <Button
+        android:layout_below="@+id/relativeLayout"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:id="@+id/start"
@@ -62,8 +62,7 @@
         android:paddingStart="@dimen/logo_cont_padding"
         android:paddingRight="@dimen/logo_cont_padding"
         android:paddingEnd="@dimen/logo_cont_padding"
-        style="@style/RowPlayButton"
-        android:layout_below="@+id/relativeLayout" />
+        style="@style/RowPlayButton" />
 
     <ImageView
         android:layout_width="30dp"

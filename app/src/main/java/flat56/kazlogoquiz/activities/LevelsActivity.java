@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ListView;
 
@@ -29,8 +28,6 @@ public class LevelsActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-
-
 
         adapter = new LevelsAdapter(this, R.layout.row, Dummy.levelList);
         list = (ListView)findViewById(R.id.list);
