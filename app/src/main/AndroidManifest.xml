@@ -50,7 +50,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.LogosActivity" />
         </activity>
-        <activity android:name=".activities.DescActivity"></activity>
     </application>
 
 </manifest>
