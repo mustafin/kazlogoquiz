@@ -1,79 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:descendantFocusability="blocksDescendants"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/row_width"
-    android:background="@drawable/row_bg">
+    android:layout_height="@dimen/row_height"
+    android:background="@drawable/row_bg"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical">
 
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/row_header"
         android:layout_alignParentTop="true"
-        android:paddingTop="@dimen/row_header_padding"
-        android:paddingLeft="@dimen/row_header_padding"
-        android:paddingStart="@dimen/row_header_padding"
-        android:paddingRight="@dimen/row_header_padding"
-        android:paddingEnd="@dimen/row_header_padding"
-        android:paddingBottom="10dp"
         android:background="@drawable/row_header_bg"
-        android:id="@+id/relativeLayout">
+        android:paddingBottom="10dp"
+        android:paddingEnd="@dimen/row_header_padding"
+        android:paddingLeft="@dimen/row_header_padding"
+        android:paddingRight="@dimen/row_header_padding"
+        android:paddingStart="@dimen/row_header_padding"
+        android:paddingTop="@dimen/row_header_padding">
 
         <TextView
             android:id="@+id/levelTitle"
-            android:textAppearance="@style/RowTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="New Text"
-            />
+            android:textAppearance="@style/RowTitle" />
 
         <ProgressBar
-            style="@style/CustomProgressBarHorizontal"
             android:id="@+id/progressBar"
+            style="@style/CustomProgressBarHorizontal"
             android:layout_width="match_parent"
             android:layout_height="7dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true" />
 
         <TextView
+            android:id="@+id/progressText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/progressText"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
             android:textColor="@color/white" />
     </RelativeLayout>
 
     <Button
-        android:layout_below="@+id/relativeLayout"
+        android:id="@+id/start"
+        style="@style/RowPlayButton"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/start"
-        android:focusable="false"
-        android:clickable="false"
-        android:text="@string/play"
-        android:layout_alignParentRight="false"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/relativeLayout"
+        android:clickable="false"
         android:drawableEnd="@drawable/ic_chevron_right"
         android:drawableRight="@drawable/ic_chevron_right"
-        android:paddingLeft="@dimen/logo_cont_padding"
-        android:paddingStart="@dimen/logo_cont_padding"
-        android:paddingRight="@dimen/logo_cont_padding"
+        android:focusable="false"
         android:paddingEnd="@dimen/logo_cont_padding"
-        style="@style/RowPlayButton" />
+        android:paddingLeft="@dimen/logo_cont_padding"
+        android:paddingRight="@dimen/logo_cont_padding"
+        android:paddingStart="@dimen/logo_cont_padding"
+        android:text="@string/play" />
 
     <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:id="@+id/imageView"
-        android:layout_below="@id/relativeLayout"
+        android:id="@+id/tengeImage"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_margin="5dp"
-        android:scaleType="fitXY"
-        android:adjustViewBounds="true"
-        android:src="@drawable/icon_tenge" />
+        android:layout_below="@id/relativeLayout"
+        android:layout_marginLeft="@dimen/row_tenge_left_margin"
+        android:layout_marginStart="@dimen/row_tenge_left_margin"
+        android:src="@drawable/icon_tenge_medium" />
+
+    <TextView
+        android:id="@+id/tenge_count"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:layout_below="@id/relativeLayout"
+        android:layout_toEndOf="@id/tengeImage"
+        android:layout_toRightOf="@id/tengeImage"
+        android:text="12"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        />
+
 
 </RelativeLayout>

@@ -35,7 +35,7 @@ public class LevelsAdapter extends ArrayAdapter<Level> {
 
         if (convertView == null) {
             LayoutInflater inflater = ((Activity) context).getLayoutInflater();
-            if(getItemViewType(position) == 0)
+            if(level.isOpened())
                 convertView = inflater.inflate(R.layout.row, parent, false);
             else
                 convertView = inflater.inflate(R.layout.row_locked, parent, false);

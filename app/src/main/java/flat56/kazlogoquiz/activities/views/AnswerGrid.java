@@ -29,6 +29,7 @@ import flat56.kazlogoquiz.activities.adapters.CharacterGridAdapter;
  */
 public class AnswerGrid {
 
+    private int VIEW_MARGIN = 0;
     private Context context;
     private List<List<Character>> charsList;
     private List<LinearLayout> layoutRows;
@@ -53,6 +54,7 @@ public class AnswerGrid {
             this.charsList.add(c);
         }
         this.GAME_BUTTON_SIZE = (int)context.getResources().getDimension(R.dimen.game_button_width);
+        this.VIEW_MARGIN = (int) context.getResources().getDimension(R.dimen.char_view_margin);
 
         layoutRows = new ArrayList<>(5);
     }
@@ -82,6 +84,7 @@ public class AnswerGrid {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         params.gravity = Gravity.CENTER_HORIZONTAL;
+        linearLayout.setClipChildren(false);
         linearLayout.setLayoutParams(params);
         return linearLayout;
     }
@@ -125,7 +128,7 @@ public class AnswerGrid {
                     layout.addView(swap, i);
 
                     LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) swap.getLayoutParams();
-                    layoutParams.setMargins(10, 0, 0, 10);
+                    layoutParams.setMargins(VIEW_MARGIN, 0, 0, VIEW_MARGIN);
 
                     startAnim(swap);
 
@@ -151,8 +154,7 @@ public class AnswerGrid {
     private View emptyView(){
         View v = new View(context);
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(GAME_BUTTON_SIZE, GAME_BUTTON_SIZE);
-                    layoutParams.setMargins(10, 0, 0, 10);
-//        v.setPadding(10, 0, 0, 10);
+                    layoutParams.setMargins(VIEW_MARGIN, 0, 0, VIEW_MARGIN);
         v.setLayoutParams(layoutParams);
         v.setBackgroundResource(R.drawable.button_stub_bg);
         return v;

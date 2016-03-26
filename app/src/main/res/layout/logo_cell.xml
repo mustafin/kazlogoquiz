@@ -14,16 +14,15 @@
             android:id="@+id/logo"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_margin="2dp"
-            android:contentDescription="@string/abc_searchview_description_clear"
+            android:layout_margin="5dp"
             android:src="@drawable/logo_temp" />
 
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:src="@drawable/icon_guessed" />
+            android:layout_gravity="end|top"
+            android:src="@drawable/icon_complete_small" />
     </FrameLayout>
 
     <LinearLayout
