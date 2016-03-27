@@ -21,5 +21,6 @@
     <dimen name="row_header_padding">15dp</dimen>
     <dimen name="row_tenge_left_margin">8dp</dimen>
     <dimen name="char_view_margin">5dp</dimen>
+    <dimen name="game_space_width">10dp</dimen>
 
 </resources>

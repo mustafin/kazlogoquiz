@@ -5,18 +5,26 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.content.Context;
+import android.graphics.Point;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.text.TextUtilsCompat;
 import android.support.v4.widget.Space;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.util.Property;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -29,6 +37,7 @@ import flat56.kazlogoquiz.activities.adapters.CharacterGridAdapter;
  */
 public class AnswerGrid {
 
+    private int ACTIVITY_PADDING;
     private int VIEW_MARGIN = 0;
     private Context context;
     private List<List<Character>> charsList;
@@ -36,27 +45,33 @@ public class AnswerGrid {
     private String answer;
     private int rowCount;
     private int GAME_BUTTON_SIZE = 0;
+    private int GAME_SPACE_SIZE = 0;
     private HashMap<Integer, Integer> map = new HashMap<>();
     private CharacterGridAdapter characterGridAdapter;
+    private int deviceWidth;
+    public static final char WORDS_DELIMETER = ' ';
+    public static final char WORDS_MINUS = '-';
+    public static final char LINE_NEXT = '\u23CE';
 
     public AnswerGrid(Context context, String answer) {
         this.context = context;
         this.answer = answer;
-        String[] rows = answer.split("\n");
-        rowCount = rows.length;
 
-        this.charsList = new ArrayList<>(5);
-        for (String row : rows) {
-            List<Character> c = new ArrayList<>(15);
-            for (int i = 0; i < row.length(); i++) {
-                c.add(row.charAt(i));
-            }
-            this.charsList.add(c);
-        }
-        this.GAME_BUTTON_SIZE = (int)context.getResources().getDimension(R.dimen.game_button_width);
-        this.VIEW_MARGIN = (int) context.getResources().getDimension(R.dimen.char_view_margin);
 
-        layoutRows = new ArrayList<>(5);
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        deviceWidth = (int)Math.floor(displayMetrics.widthPixels / displayMetrics.density);
+
+        GAME_BUTTON_SIZE = (int)context.getResources().getDimension(R.dimen.game_button_width);
+        GAME_SPACE_SIZE = (int)context.getResources().getDimension(R.dimen.game_space_width);
+        VIEW_MARGIN = (int) context.getResources().getDimension(R.dimen.char_view_margin);
+        ACTIVITY_PADDING = (int) context.getResources().getDimension(R.dimen.activity_padding);
+        deviceWidth -= ACTIVITY_PADDING * 4;
+
+
+
+
+        initRowBuffer();
+
     }
 
     public void initAndAddTo(ViewGroup parent) {
@@ -65,15 +80,22 @@ public class AnswerGrid {
             LinearLayout linearLayout = initLinearLayout();
             layoutRows.add(linearLayout);
             for (Character character : chars) {
-                if(character == ' ' || character == '-'){
+                if(character == WORDS_DELIMETER) {
                     Space v = new Space(context);
-                    LayoutParams layoutParams = new LayoutParams(20, LayoutParams.MATCH_PARENT);
+                    LayoutParams layoutParams = new LayoutParams(GAME_SPACE_SIZE, LayoutParams.MATCH_PARENT);
                     v.setLayoutParams(layoutParams);
                     linearLayout.addView(v);
-                }else {
-                    linearLayout.addView(emptyView());
-                }
+                }else if(character == WORDS_MINUS || character == LINE_NEXT){
+                TextView v = new TextView(context);
+                LayoutParams layoutParams = new LayoutParams(GAME_SPACE_SIZE, LayoutParams.MATCH_PARENT);
+                v.setLayoutParams(layoutParams);
+                v.setText(String.valueOf(character));
+                linearLayout.addView(v);
+            }else {
+
+                linearLayout.addView(emptyView());
             }
+        }
             parent.addView(linearLayout);
 
         }
@@ -123,7 +145,7 @@ public class AnswerGrid {
         for (LinearLayout layout : layoutRows) {
             for (int i = 0; i < layout.getChildCount(); i++) {
                 View view = layout.getChildAt(i);
-                if(!(view instanceof Button) && !(view instanceof Space)){
+                if(!(view instanceof Button) && !(view instanceof Space) && !(view instanceof TextView)){
                     layout.removeViewAt(i);
                     layout.addView(swap, i);
 
@@ -178,6 +200,44 @@ public class AnswerGrid {
 
         anim.setTarget(view);
         anim.start();
+    }
+
+    private void initRowBuffer(){
+
+        List<String> rows = new ArrayList<>(Arrays.asList(answer.split("\n")));
+        rowCount = rows.size();
+
+        this.charsList = new ArrayList<>(5);
+        int rowWidth = 0;
+        for (int i = 0; i < rows.size(); i++) {
+            String row = rows.get(i);
+            List<Character> chars = new ArrayList<>(15);
+            rowWidth = 0;
+            for (int j = 1; j < row.length(); j++) {
+                char c = (row.charAt(j));
+                if(c == WORDS_DELIMETER || c == WORDS_MINUS){
+                    rowWidth += GAME_SPACE_SIZE + VIEW_MARGIN;
+                }else{
+                    rowWidth += GAME_BUTTON_SIZE + VIEW_MARGIN;
+                }
+                if(rowWidth >= deviceWidth){
+                    chars.add(LINE_NEXT);
+                    if(rows.size() <= i)
+                    rows.set(i + 1, row.charAt(j-1) + row.charAt(j) + rows.get(i));
+                    else rows.add(row.charAt(j-1) + row.charAt(j) + rows.get(i));
+                }else{
+                    chars.add(row.charAt(j - 1));
+                }
+            }
+            if(row.charAt(row.length() - 1) != LINE_NEXT)
+                chars.add(row.charAt(row.length() - 1));
+            this.charsList.add(chars);
+        }
+
+
+
+
+        layoutRows = new ArrayList<>(5);
     }
 
 }
