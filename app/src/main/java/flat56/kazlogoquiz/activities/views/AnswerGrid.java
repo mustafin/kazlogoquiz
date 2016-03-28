@@ -52,7 +52,7 @@ public class AnswerGrid {
     private int deviceWidth;
     public static final char WORDS_DELIMETER = ' ';
     public static final char WORDS_MINUS = '-';
-    public static final char LINE_NEXT = '\u23CE';
+    public static final char LINE_NEXT = "\u23CE".charAt(0);
 
     public AnswerGrid(Context context, String answer) {
         this.context = context;
@@ -60,13 +60,13 @@ public class AnswerGrid {
 
 
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
-        deviceWidth = (int) Math.floor(displayMetrics.widthPixels / displayMetrics.density);
+        deviceWidth = displayMetrics.widthPixels;
 
         GAME_BUTTON_SIZE = (int) context.getResources().getDimension(R.dimen.game_button_width);
         GAME_SPACE_SIZE = (int) context.getResources().getDimension(R.dimen.game_space_width);
         VIEW_MARGIN = (int) context.getResources().getDimension(R.dimen.char_view_margin);
         ACTIVITY_PADDING = (int) context.getResources().getDimension(R.dimen.activity_padding);
-        deviceWidth -= ACTIVITY_PADDING;
+        deviceWidth -= ACTIVITY_PADDING * 3;
 
 
         initRowBuffer();
@@ -214,7 +214,7 @@ public class AnswerGrid {
         for (int i = 0; i < rows.size(); i++) {
             String row = rows.get(i);
             ArrayList<Character> chars = new ArrayList<>(15);
-            rowWidth = 0;
+            rowWidth = GAME_BUTTON_SIZE + VIEW_MARGIN;
             for (int j = 1; j < row.length(); j++) {
                 char c = (row.charAt(j));
                 if (c == WORDS_DELIMETER) {

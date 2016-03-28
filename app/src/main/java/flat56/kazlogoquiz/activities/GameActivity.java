@@ -87,7 +87,7 @@ public class GameActivity extends AppCompatActivity implements OnFragmentInterac
     }
 
     @Override
-    public void onFragmentInteraction(Uri uri) {
+    public void onFragmentAction(Uri uri) {
 
     }
 

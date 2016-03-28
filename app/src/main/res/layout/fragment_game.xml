@@ -100,12 +100,14 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/char_grid_bottom_margin">
 
         <GridView
             android:id="@+id/characters_grid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:horizontalSpacing="@dimen/char_view_margin"
             android:verticalSpacing="@dimen/char_view_margin"
             android:layout_gravity="center_horizontal"/>

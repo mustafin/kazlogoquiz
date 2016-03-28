@@ -22,7 +22,7 @@ import flat56.kazlogoquiz.utils.ViewIdGenerator;
 public class CharacterGridAdapter extends BaseAdapter {
 
     private Context context;
-//    private List<Button> buttonList;
+    //    private List<Button> buttonList;
     private List<Character> characterList;
     private String chars;
     private int GAME_BUTTON_SIZE = 0;
@@ -71,24 +71,24 @@ public class CharacterGridAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Character c = characterList.get(position);
-            if (c == '-') {
-                convertView = new View(context);
-                convertView.setLayoutParams(new AbsListView.LayoutParams(GAME_BUTTON_SIZE, GAME_BUTTON_SIZE));
+        if (c == '-') {
+            convertView = new View(context);
+            convertView.setLayoutParams(new AbsListView.LayoutParams(GAME_BUTTON_SIZE, GAME_BUTTON_SIZE));
 
-            } else {
-                Button b = new Button(context);
-                b.setBackgroundResource(R.drawable.game_char_but_selector);
-                b.setId(ViewIdGenerator.generateViewId());
-                AbsListView.LayoutParams params = new AbsListView.LayoutParams(GAME_BUTTON_SIZE, GAME_BUTTON_SIZE);
+        } else {
+            Button b = new Button(context);
+            b.setBackgroundResource(R.drawable.game_char_but_selector);
+            b.setId(ViewIdGenerator.generateViewId());
+            AbsListView.LayoutParams params = new AbsListView.LayoutParams(GAME_BUTTON_SIZE, GAME_BUTTON_SIZE);
+            b.setPadding(0, 0, 0, 0);
+            b.setLayoutParams(params);
 
-                b.setLayoutParams(params);
 
-
-                b.setText(c.toString());
+            b.setText(c.toString());
 //            buttonList.add(b);
-                convertView = b;
-                b.setOnClickListener(buttonClick(position, b));
-            }
+            convertView = b;
+            b.setOnClickListener(buttonClick(position, b));
+        }
 
         return convertView;
     }
