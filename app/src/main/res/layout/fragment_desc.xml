@@ -14,43 +14,67 @@
         android:layout_marginBottom="@dimen/logo_cont_padding"
         android:layout_marginTop="@dimen/logo_cont_padding">
 
+        <FrameLayout
 
-        <ImageView
-            android:id="@+id/imageLogo"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
+            android:id="@+id/imageCont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/logo_temp" />
+            android:layout_centerHorizontal="true">
+
+            <ImageView
+                android:id="@+id/imageLogo"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_margin="5dp"
+                android:src="@drawable/logo_temp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|top"
+
+                android:src="@drawable/icon_complete_large" />
+        </FrameLayout>
 
 
         <LinearLayout
             android:id="@+id/points"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/imageLogo"
-            android:layout_marginTop="10dp"
+            android:layout_below="@+id/imageCont"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal" />
 
     </RelativeLayout>
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logo_cont"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal" />
 
     <TextView
         android:id="@+id/description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+
+        />
 
     <Button
         android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/char_grid_bottom_margin" />
 
 
 </RelativeLayout>

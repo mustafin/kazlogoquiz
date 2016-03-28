@@ -5,6 +5,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +47,9 @@ public class DescFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
         if (getArguments() != null) {
             levelPos = getArguments().getInt(LogosActivity.LEVEL_EXTRA);
             logoPos = getArguments().getInt(LOGO_EXTRA);
@@ -57,11 +61,25 @@ public class DescFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        if(context == null)
+            context = getActivity().getBaseContext();
         View view = inflater.inflate(R.layout.fragment_desc, container, false);
 
         TextView title = (TextView) view.findViewById(R.id.title);
         TextView description = (TextView) view.findViewById(R.id.description);
         Button back = (Button) view.findViewById(R.id.back);
+        LinearLayout points = (LinearLayout) view.findViewById(R.id.points);
+
+        for (int i = 0; i < logo.getPoints(); i++) {
+            ImageView point = new ImageView(getActivity().getBaseContext());
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            params.setMargins(5, 0, 0, 5);
+            point.setLayoutParams(params);
+            point.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.icon_tenge_medium));
+            points.addView(point);
+
+        }
+
 
         title.setText(logo.getCorrect());
         description.setText(logo.getDescription());

@@ -48,7 +48,7 @@ public class GameActivity extends AppCompatActivity implements OnFragmentInterac
 
         Fragment gameFragment = null;
         if (logo.isAnswered()) {
-            gameFragment = DescFragment.newInstance("","");
+            gameFragment = DescFragment.newInstance(levelPos, logoPos);
         }else{
             gameFragment = GameFragment.newInstance(levelPos, logoPos);
         }
