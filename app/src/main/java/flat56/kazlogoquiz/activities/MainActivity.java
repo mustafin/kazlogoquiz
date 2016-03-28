@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import flat56.kazlogoquiz.R;
 
@@ -20,9 +21,9 @@ import flat56.kazlogoquiz.R;
 public class MainActivity extends Activity {
 
     private Button play;
-    private ImageButton dict;
-    private ImageButton share;
-    private ImageButton like;
+    private ImageView dict;
+    private ImageView share;
+    private ImageView like;
 
 
     @Override
@@ -30,17 +31,9 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        dict = (ImageButton) findViewById(R.id.dict);
-        share = (ImageButton) findViewById(R.id.share);
-        like = (ImageButton) findViewById(R.id.like);
-
-        int color_blue = getResources().getColor(R.color.main_blue);
-        int color_violet = getResources().getColor(R.color.main_violet);
-        ((GradientDrawable)share.getBackground().getCurrent()).setColor(color_blue);
-        ((GradientDrawable)like.getBackground().getCurrent()).setColor(color_violet);
-
-
-
+        dict = (ImageView) findViewById(R.id.dict);
+        share = (ImageView) findViewById(R.id.share);
+        like = (ImageView) findViewById(R.id.like);
 
 
         play = (Button)findViewById(R.id.play);

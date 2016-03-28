@@ -35,18 +35,9 @@ public class GameFragment extends Fragment {
     private LinearLayout points;
     private Context context;
 
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
     private OnFragmentInteractionListener mListener;
 
-    public GameFragment() {
-        // Required empty public constructor
-    }
+    public GameFragment() {}
 
     public static GameFragment newInstance(int levelPos, int logoPos) {
         GameFragment fragment = new GameFragment();
@@ -132,15 +123,14 @@ public class GameFragment extends Fragment {
         imageLogo.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.logo_temp));
         for (int i = 0; i < logo.getPoints(); i++) {
             ImageView view = new ImageView(getActivity().getBaseContext());
-            AbsListView.MarginLayoutParams params = new AbsListView.MarginLayoutParams(AbsListView.LayoutParams.WRAP_CONTENT, AbsListView.LayoutParams.WRAP_CONTENT);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             params.setMargins(5, 0, 0, 5);
-//            params.setMargins(5, 0, 0, 5);
             view.setLayoutParams(params);
-            view.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.icon_tenge_small));
+            view.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.icon_tenge_medium));
             points.addView(view);
+
         }
         answerGrid.initAndAddTo(answerGridCont);
-
 
     }
 

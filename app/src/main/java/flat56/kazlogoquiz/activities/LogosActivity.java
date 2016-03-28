@@ -52,6 +52,7 @@ public class LogosActivity extends AppCompatActivity{
             grid.setOnItemClickListener(((parent, view, position, id) -> {
                 Intent intent = new Intent(LogosActivity.this, GameActivity.class);
                 intent.putExtra(GameActivity.LOGO_EXTRA, position);
+                intent.putExtra(LEVEL_EXTRA, itemPos);
                 startActivity(intent);
 
             }));

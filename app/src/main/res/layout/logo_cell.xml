@@ -12,13 +12,14 @@
         android:layout_centerHorizontal="true">
         <ImageView
             android:id="@+id/logo"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:src="@drawable/logo_temp" />
 
 
         <ImageView
+            android:id="@+id/complete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|top"

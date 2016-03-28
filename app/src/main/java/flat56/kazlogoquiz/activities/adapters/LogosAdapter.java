@@ -1,6 +1,7 @@
 package flat56.kazlogoquiz.activities.adapters;
 
 import android.content.Context;
+import android.opengl.Visibility;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -39,6 +40,10 @@ public class LogosAdapter extends ArrayAdapter<Logo>{
         }
         Logo item = logos.get(position);
         ImageView logo = (ImageView) convertView.findViewById(R.id.logo);
+        ImageView complete = (ImageView) convertView.findViewById(R.id.complete);
+        if(!item.isAnswered())
+            complete.setVisibility(View.INVISIBLE);
+
         LinearLayout difficulty = (LinearLayout) convertView.findViewById(R.id.points);
         int points = item.getPoints();
         if(difficulty.getChildCount() == 0) {

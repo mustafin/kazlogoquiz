@@ -23,11 +23,11 @@
     <Button
         android:id="@+id/play"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/circle_button_size"
         android:text="@string/play"
         android:textColor="#fff"
         style="@style/MainPlayBut"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="@dimen/play_but_margin_bottom"
         android:layout_above="@+id/buttons_layout"
         android:layout_centerHorizontal="true" />
 
@@ -38,32 +38,29 @@
         android:orientation="horizontal"
         android:layout_alignParentBottom="true">
 
-        <ImageButton
+        <ImageView
             android:id="@+id/dict"
             android:layout_width="@dimen/circle_button_size"
             android:layout_height="@dimen/circle_button_size"
-            android:background="@drawable/main_circle_but_selector"
-            android:src="@drawable/ic_menu"
+            android:src="@drawable/icon_guide"
             android:textColor="#fff"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             />
 
-        <ImageButton
+        <ImageView
             android:id="@+id/share"
             android:layout_width="@dimen/circle_button_size"
             android:layout_height="@dimen/circle_button_size"
-            android:background="@drawable/main_circle_but_selector"
-            android:src="@drawable/ic_menu"
+            android:src="@drawable/icon_setup"
             android:textColor="#fff"
             android:layout_centerHorizontal="true" />
 
-        <ImageButton
+        <ImageView
             android:id="@+id/like"
             android:layout_width="@dimen/circle_button_size"
             android:layout_height="@dimen/circle_button_size"
-            android:background="@drawable/main_circle_but_selector"
-            android:src="@drawable/ic_menu"
+            android:src="@drawable/icon_love"
             android:textColor="#fff"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"

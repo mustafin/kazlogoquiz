@@ -39,6 +39,18 @@ public class Logo {
         this.points = points;
     }
 
+    public Logo(String path, String correctRu, String correctKz,
+                String charsRu, String charsKz, String description, int points, boolean answered) {
+        this.path = path;
+        this.correctRu = correctRu;
+        this.correctKz = correctKz;
+        this.charsRu = charsRu;
+        this.charsKz = charsKz;
+        this.description = description;
+        this.points = points;
+        this.answered = answered;
+    }
+
     public Logo(){}
 
     public String getPath() {

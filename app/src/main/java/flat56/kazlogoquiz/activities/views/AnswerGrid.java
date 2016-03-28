@@ -10,6 +10,7 @@ import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.text.TextUtilsCompat;
 import android.support.v4.widget.Space;
+import android.text.Html;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Property;
@@ -59,15 +60,13 @@ public class AnswerGrid {
 
 
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
-        deviceWidth = (int)Math.floor(displayMetrics.widthPixels / displayMetrics.density);
+        deviceWidth = (int) Math.floor(displayMetrics.widthPixels / displayMetrics.density);
 
-        GAME_BUTTON_SIZE = (int)context.getResources().getDimension(R.dimen.game_button_width);
-        GAME_SPACE_SIZE = (int)context.getResources().getDimension(R.dimen.game_space_width);
+        GAME_BUTTON_SIZE = (int) context.getResources().getDimension(R.dimen.game_button_width);
+        GAME_SPACE_SIZE = (int) context.getResources().getDimension(R.dimen.game_space_width);
         VIEW_MARGIN = (int) context.getResources().getDimension(R.dimen.char_view_margin);
         ACTIVITY_PADDING = (int) context.getResources().getDimension(R.dimen.activity_padding);
-        deviceWidth -= ACTIVITY_PADDING * 4;
-
-
+        deviceWidth -= ACTIVITY_PADDING;
 
 
         initRowBuffer();
@@ -80,28 +79,31 @@ public class AnswerGrid {
             LinearLayout linearLayout = initLinearLayout();
             layoutRows.add(linearLayout);
             for (Character character : chars) {
-                if(character == WORDS_DELIMETER) {
+                if (character == WORDS_DELIMETER) {
                     Space v = new Space(context);
                     LayoutParams layoutParams = new LayoutParams(GAME_SPACE_SIZE, LayoutParams.MATCH_PARENT);
                     v.setLayoutParams(layoutParams);
                     linearLayout.addView(v);
-                }else if(character == WORDS_MINUS || character == LINE_NEXT){
-                TextView v = new TextView(context);
-                LayoutParams layoutParams = new LayoutParams(GAME_SPACE_SIZE, LayoutParams.MATCH_PARENT);
-                v.setLayoutParams(layoutParams);
-                v.setText(String.valueOf(character));
-                linearLayout.addView(v);
-            }else {
+                } else if (character == WORDS_MINUS || character == LINE_NEXT) {
+                    TextView v = new TextView(context);
+                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(GAME_BUTTON_SIZE, LinearLayout.LayoutParams.MATCH_PARENT);
+                    layoutParams.setMargins(VIEW_MARGIN, 0, 0, VIEW_MARGIN);
+                    v.setLayoutParams(layoutParams);
+                    v.setText(Html.fromHtml(character.toString()));
+                    v.setCompoundDrawablesWithIntrinsicBounds(
+                            R.drawable.ic_subdirectory_arrow_left, 0, 0, 0);
+                    linearLayout.addView(v);
+                } else {
 
-                linearLayout.addView(emptyView());
+                    linearLayout.addView(emptyView());
+                }
             }
-        }
             parent.addView(linearLayout);
 
         }
     }
 
-    private LinearLayout initLinearLayout(){
+    private LinearLayout initLinearLayout() {
         LinearLayout linearLayout = new LinearLayout(context);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -111,13 +113,12 @@ public class AnswerGrid {
         return linearLayout;
     }
 
-    public void addButton(Button b, int fromPos){
+    public void addButton(Button b, int fromPos) {
 
-        if(swapFirstView(b)){
+        if (swapFirstView(b)) {
             map.put(b.getId(), fromPos);
             b.setOnClickListener(view -> {
                 int positionInChars = map.get(b.getId());
-
 
 
                 View v = emptyView();
@@ -128,11 +129,11 @@ public class AnswerGrid {
         }
     }
 
-    private boolean swapViewAt(View remove, View add){
+    private boolean swapViewAt(View remove, View add) {
         ViewGroup parent = (ViewGroup) remove.getParent();
-        if(parent != null) {
+        if (parent != null) {
             int index = parent.indexOfChild(remove);
-            if(index != -1) {
+            if (index != -1) {
                 parent.removeView(remove);
                 parent.addView(add, index);
                 return true;
@@ -141,11 +142,11 @@ public class AnswerGrid {
         return false;
     }
 
-    private boolean swapFirstView(View swap){
+    private boolean swapFirstView(View swap) {
         for (LinearLayout layout : layoutRows) {
             for (int i = 0; i < layout.getChildCount(); i++) {
                 View view = layout.getChildAt(i);
-                if(!(view instanceof Button) && !(view instanceof Space) && !(view instanceof TextView)){
+                if (!(view instanceof Button) && !(view instanceof Space) && !(view instanceof TextView)) {
                     layout.removeViewAt(i);
                     layout.addView(swap, i);
 
@@ -161,11 +162,11 @@ public class AnswerGrid {
         return false;
     }
 
-    public boolean canSwap(){
+    public boolean canSwap() {
         for (LinearLayout layout : layoutRows) {
             for (int i = 0; i < layout.getChildCount(); i++) {
                 View view = layout.getChildAt(i);
-                if(!(view instanceof Button) && !(view instanceof Space)){
+                if (!(view instanceof Button) && !(view instanceof Space) && !(view instanceof TextView)) {
                     return true;
                 }
             }
@@ -173,10 +174,10 @@ public class AnswerGrid {
         return false;
     }
 
-    private View emptyView(){
+    private View emptyView() {
         View v = new View(context);
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(GAME_BUTTON_SIZE, GAME_BUTTON_SIZE);
-                    layoutParams.setMargins(VIEW_MARGIN, 0, 0, VIEW_MARGIN);
+        layoutParams.setMargins(VIEW_MARGIN, 0, 0, VIEW_MARGIN);
         v.setLayoutParams(layoutParams);
         v.setBackgroundResource(R.drawable.button_stub_bg);
         return v;
@@ -186,7 +187,7 @@ public class AnswerGrid {
         this.characterGridAdapter = characterGridAdapter;
     }
 
-    private void startAnim(View view){
+    private void startAnim(View view) {
         AnimatorSet anim = (AnimatorSet) AnimatorInflater.loadAnimator(context, R.animator.jump_in);
 //        PropertyValuesHolder pvhX = PropertyValuesHolder.ofFloat(View.ROTATION_X, 80f);
 //
@@ -202,39 +203,44 @@ public class AnswerGrid {
         anim.start();
     }
 
-    private void initRowBuffer(){
+    private void initRowBuffer() {
 
-        List<String> rows = new ArrayList<>(Arrays.asList(answer.split("\n")));
+        ArrayList<String> rows = new ArrayList<>();
+        rows.addAll(Arrays.asList(answer.split("\n")));
         rowCount = rows.size();
 
         this.charsList = new ArrayList<>(5);
         int rowWidth = 0;
         for (int i = 0; i < rows.size(); i++) {
             String row = rows.get(i);
-            List<Character> chars = new ArrayList<>(15);
+            ArrayList<Character> chars = new ArrayList<>(15);
             rowWidth = 0;
             for (int j = 1; j < row.length(); j++) {
                 char c = (row.charAt(j));
-                if(c == WORDS_DELIMETER || c == WORDS_MINUS){
+                if (c == WORDS_DELIMETER) {
                     rowWidth += GAME_SPACE_SIZE + VIEW_MARGIN;
-                }else{
+                } else {
                     rowWidth += GAME_BUTTON_SIZE + VIEW_MARGIN;
                 }
-                if(rowWidth >= deviceWidth){
+                if (rowWidth >= deviceWidth) {
                     chars.add(LINE_NEXT);
-                    if(rows.size() <= i)
-                    rows.set(i + 1, row.charAt(j-1) + row.charAt(j) + rows.get(i));
-                    else rows.add(row.charAt(j-1) + row.charAt(j) + rows.get(i));
-                }else{
+                    if (i + 1 < rows.size())  rows.set(i + 1, row.substring(j - 1).trim() + " " + rows.get(i + 1));
+                    else                      rows.add(row.substring(j - 1).trim());
+                    break;
+                } else {
                     chars.add(row.charAt(j - 1));
                 }
             }
-            if(row.charAt(row.length() - 1) != LINE_NEXT)
+            if (chars.get(chars.size() - 1) != LINE_NEXT)
                 chars.add(row.charAt(row.length() - 1));
+            else{
+                //remove white space between word and nextline character
+                if(chars.size() > 2 && chars.get(chars.size() - 2) == ' '){
+                    chars.remove(chars.size() - 2);
+                }
+            }
             this.charsList.add(chars);
         }
-
-
 
 
         layoutRows = new ArrayList<>(5);
