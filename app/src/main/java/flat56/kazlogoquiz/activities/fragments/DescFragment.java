@@ -2,7 +2,6 @@ package flat56.kazlogoquiz.activities.fragments;
 
 import android.app.Activity;
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -13,8 +12,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import flat56.kazlogoquiz.Dummy;
 import flat56.kazlogoquiz.R;
@@ -77,9 +74,7 @@ public class DescFragment extends Fragment {
             point.setLayoutParams(params);
             point.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.icon_tenge_medium));
             points.addView(point);
-
         }
-
 
         title.setText(logo.getCorrect());
         description.setText(logo.getDescription());

@@ -50,6 +50,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.LogosActivity" />
         </activity>
+        <activity android:name=".activities.DirectoryActivity"></activity>
     </application>
 
 </manifest>

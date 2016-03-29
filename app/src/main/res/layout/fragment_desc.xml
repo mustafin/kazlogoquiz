@@ -15,11 +15,9 @@
         android:layout_marginTop="@dimen/logo_cont_padding">
 
         <FrameLayout
-
             android:id="@+id/imageCont"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true">
 
@@ -34,7 +32,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end|top"
-
                 android:src="@drawable/icon_complete_large" />
         </FrameLayout>
 
@@ -56,7 +53,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/logo_cont"
         android:layout_centerHorizontal="true"
-        android:gravity="center_horizontal" />
+        android:gravity="center_horizontal"
+        android:textAppearance="@style/TitleText" />
 
     <TextView
         android:id="@+id/description"
@@ -64,9 +62,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/title"
         android:layout_centerHorizontal="true"
-        android:gravity="center_horizontal"
-
-        />
+        android:textSize="@dimen/desc_text_size"
+        android:gravity="center_horizontal" />
 
     <Button
         android:id="@+id/back"
@@ -74,12 +71,18 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/char_grid_bottom_margin"
+        android:layout_marginEnd="@dimen/activity_h_margin"
+        android:layout_marginLeft="@dimen/activity_h_margin"
+        android:layout_marginRight="@dimen/activity_h_margin"
+        android:layout_marginStart="@dimen/activity_h_margin"
         android:background="@drawable/big_back_but"
         android:drawableLeft="@drawable/big_back_but_left_circle"
         android:drawableStart="@drawable/big_back_but_left_circle"
+        android:onClick="goBack"
+        android:paddingRight="@dimen/circle_button_size"
         android:text="@string/back"
-        android:textAppearance="@style/MainPlayBut"
-        android:layout_marginBottom="@dimen/char_grid_bottom_margin" />
+        android:textAppearance="@style/MainPlayBut" />
 
 
 </RelativeLayout>

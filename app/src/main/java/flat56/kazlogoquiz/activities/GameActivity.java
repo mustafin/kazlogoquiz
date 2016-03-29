@@ -7,6 +7,7 @@ import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
 
 import flat56.kazlogoquiz.Dummy;
 import flat56.kazlogoquiz.R;
@@ -90,6 +91,12 @@ public class GameActivity extends AppCompatActivity implements OnFragmentInterac
         transaction.setCustomAnimations(R.anim.abc_fade_in, R.anim.abc_fade_out);
         transaction.replace(R.id.fragment, descFragment);
         transaction.commit();
+    }
+
+
+
+    public void goBack(View v){
+        NavUtils.navigateUpFromSameTask(this);
     }
 
 
