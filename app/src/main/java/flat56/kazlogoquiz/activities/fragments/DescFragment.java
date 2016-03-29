@@ -87,9 +87,9 @@ public class DescFragment extends Fragment {
         return view;
     }
 
-    public void onButtonPressed(Uri uri) {
+    public void onButtonPressed() {
         if (mListener != null) {
-            mListener.onFragmentAction(uri);
+            mListener.onFragmentAction();
         }
     }
 

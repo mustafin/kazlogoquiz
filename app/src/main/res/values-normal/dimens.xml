@@ -7,7 +7,9 @@
 
     <!-- Game Activity -->
     <dimen name="game_bottom_bar_height">75dp</dimen>
-    <dimen name="game_button_width">30dp</dimen>
+    <dimen name="game_button_width">40dp</dimen>
+    <dimen name="game_space_width">10dp</dimen>
+    <dimen name="char_grid_bottom_margin">30dp</dimen>
 
 
     <!-- Level Row -->
@@ -16,14 +18,16 @@
     <dimen name="row_radius">8dp</dimen>
 
 
-    <dimen name="circle_button_size">40dp</dimen>
+    <dimen name="circle_button_size">60dp</dimen>
     <dimen name="activity_padding">10dp</dimen>
     <dimen name="row_header_padding">10dp</dimen>
     <dimen name="row_tenge_left_margin">5dp</dimen>
     <dimen name="char_view_margin">5dp</dimen>
-    <dimen name="game_space_width">10dp</dimen>
     <dimen name="play_but_margin_bottom">15dp</dimen>
-    <dimen name="button_text_size">16sp</dimen>
-    <dimen name="char_grid_bottom_margin">30dp</dimen>
+    <dimen name="button_text_size">18sp</dimen>
+    <dimen name="cell_logo_size">100dp</dimen>
+    <dimen name="cell_logo_margin">5dp</dimen>
+    <dimen name="logo_size">160dp</dimen>
+    <dimen name="logo_margin">15dp</dimen>
 
 </resources>

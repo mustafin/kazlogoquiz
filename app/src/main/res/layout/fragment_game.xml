@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_game"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/activity_padding"
@@ -17,8 +18,8 @@
         <ImageView
             android:layout_width="@dimen/circle_button_size"
             android:layout_height="@dimen/circle_button_size"
-            android:layout_toLeftOf="@+id/imageLogo"
-            android:layout_toStartOf="@+id/imageLogo"
+            android:layout_toLeftOf="@+id/imageCont"
+            android:layout_toStartOf="@+id/imageCont"
             android:layout_marginRight="15dp"
             android:layout_marginEnd="15dp"
             android:layout_marginTop="15dp"
@@ -27,28 +28,43 @@
         <ImageView
             android:layout_width="@dimen/circle_button_size"
             android:layout_height="@dimen/circle_button_size"
-            android:layout_toLeftOf="@+id/imageLogo"
-            android:layout_toStartOf="@+id/imageLogo"
+            android:layout_toLeftOf="@+id/imageCont"
+            android:layout_toStartOf="@+id/imageCont"
             android:layout_marginRight="15dp"
             android:layout_marginEnd="15dp"
             android:layout_marginTop="90dp"
             android:src="@drawable/icon_help_share"
             />
+        <FrameLayout
 
-        <ImageView
-            android:id="@+id/imageLogo"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
+            android:id="@+id/imageCont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/logo_temp" />
+            android:layout_centerHorizontal="true">
+
+            <ImageView
+                android:id="@+id/imageLogo"
+                android:layout_width="@dimen/logo_size"
+                android:layout_height="@dimen/logo_size"
+                android:layout_margin="@dimen/logo_margin"
+                android:src="@drawable/logo_temp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|top"
+                android:visibility="invisible"
+                android:src="@drawable/icon_complete_large" />
+        </FrameLayout>
 
 
         <ImageView
             android:layout_width="@dimen/circle_button_size"
             android:layout_height="@dimen/circle_button_size"
-            android:layout_toRightOf="@+id/imageLogo"
-            android:layout_toEndOf="@+id/imageLogo"
+            android:layout_toRightOf="@+id/imageCont"
+            android:layout_toEndOf="@+id/imageCont"
             android:layout_marginLeft="15dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
@@ -57,8 +73,8 @@
         <ImageView
             android:layout_width="@dimen/circle_button_size"
             android:layout_height="@dimen/circle_button_size"
-            android:layout_toRightOf="@+id/imageLogo"
-            android:layout_toEndOf="@+id/imageLogo"
+            android:layout_toRightOf="@+id/imageCont"
+            android:layout_toEndOf="@+id/imageCont"
             android:layout_marginLeft="15dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="90dp"
@@ -69,7 +85,7 @@
             android:id="@+id/points"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/imageLogo"
+            android:layout_below="@+id/imageCont"
             android:layout_marginTop="10dp"
             android:layout_centerHorizontal="true"
             android:orientation="horizontal" />

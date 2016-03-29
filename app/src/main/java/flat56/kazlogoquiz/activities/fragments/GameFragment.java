@@ -5,7 +5,9 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,6 +60,7 @@ public class GameFragment extends Fragment {
             logo = Dummy.levelList.get(levelPos).getLogos().get(logoPos);
         }
 
+
     }
 
     @Override
@@ -90,14 +93,17 @@ public class GameFragment extends Fragment {
 
         fillData();
 
+        answerGrid.setBtnAddListener(st -> Log.i("CURR WORD IS", st));
+        answerGrid.setLastBtnAddListener(this::swapScreens);
+
         return view;
 
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
+    public void swapScreens(String result) {
         if (mListener != null) {
-            mListener.onFragmentAction(uri);
+            if(result.equals(logo.getCorrect()))
+                mListener.onFragmentAction();
         }
     }
 

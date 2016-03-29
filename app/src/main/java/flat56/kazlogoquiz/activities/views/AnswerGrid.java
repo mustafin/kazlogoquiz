@@ -2,26 +2,16 @@ package flat56.kazlogoquiz.activities.views;
 
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.animation.PropertyValuesHolder;
 import android.content.Context;
-import android.graphics.Point;
-import android.os.Build;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.text.TextUtilsCompat;
 import android.support.v4.widget.Space;
 import android.text.Html;
-import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import android.util.Property;
-import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -52,7 +42,9 @@ public class AnswerGrid {
     private int deviceWidth;
     public static final char WORDS_DELIMETER = ' ';
     public static final char WORDS_MINUS = '-';
-    public static final char LINE_NEXT = "\u23CE".charAt(0);
+    public static final char LINE_NEXT = '\u23CE';
+    private OnButtonAddListener btnAddListener;
+    private OnLastButtonAddListener lastBtnAddListener;
 
     public AnswerGrid(Context context, String answer) {
         this.context = context;
@@ -79,23 +71,34 @@ public class AnswerGrid {
             LinearLayout linearLayout = initLinearLayout();
             layoutRows.add(linearLayout);
             for (Character character : chars) {
-                if (character == WORDS_DELIMETER) {
-                    Space v = new Space(context);
-                    LayoutParams layoutParams = new LayoutParams(GAME_SPACE_SIZE, LayoutParams.MATCH_PARENT);
-                    v.setLayoutParams(layoutParams);
-                    linearLayout.addView(v);
-                } else if (character == WORDS_MINUS || character == LINE_NEXT) {
-                    TextView v = new TextView(context);
-                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(GAME_BUTTON_SIZE, LinearLayout.LayoutParams.MATCH_PARENT);
-                    layoutParams.setMargins(VIEW_MARGIN, 0, 0, VIEW_MARGIN);
-                    v.setLayoutParams(layoutParams);
-                    v.setText(Html.fromHtml(character.toString()));
-                    v.setCompoundDrawablesWithIntrinsicBounds(
-                            R.drawable.ic_subdirectory_arrow_left, 0, 0, 0);
-                    linearLayout.addView(v);
-                } else {
 
-                    linearLayout.addView(emptyView());
+                switch(character){
+                    case WORDS_DELIMETER:
+                        Space v = new Space(context);
+                        LayoutParams layoutParams = new LayoutParams(GAME_SPACE_SIZE, LayoutParams.MATCH_PARENT);
+                        v.setLayoutParams(layoutParams);
+                        linearLayout.addView(v);
+                        break;
+                    case WORDS_MINUS:
+                        TextView textView = new TextView(context);
+                        LinearLayout.LayoutParams layoutParams1 = new LinearLayout.LayoutParams(GAME_BUTTON_SIZE, LinearLayout.LayoutParams.MATCH_PARENT);
+                        layoutParams1.setMargins(VIEW_MARGIN, 0, 0, VIEW_MARGIN);
+                        textView.setLayoutParams(layoutParams1);
+                        textView.setText(Html.fromHtml(character.toString()));
+                        linearLayout.addView(textView);
+                        break;
+                    case LINE_NEXT:
+                        TextView textView1 = new TextView(context);
+                        LinearLayout.LayoutParams layoutParams2 = new LinearLayout.LayoutParams(GAME_SPACE_SIZE, LinearLayout.LayoutParams.MATCH_PARENT);
+                        layoutParams2.setMargins(VIEW_MARGIN, 0, 0, VIEW_MARGIN);
+                        textView1.setLayoutParams(layoutParams2);
+                        textView1.setCompoundDrawablesWithIntrinsicBounds(
+                                R.drawable.ic_subdirectory_arrow_left, 0, 0, 0);
+                        linearLayout.addView(textView1);
+                        break;
+                    default:
+                        linearLayout.addView(emptyView());
+                        break;
                 }
             }
             parent.addView(linearLayout);
@@ -119,14 +122,43 @@ public class AnswerGrid {
             map.put(b.getId(), fromPos);
             b.setOnClickListener(view -> {
                 int positionInChars = map.get(b.getId());
-
-
                 View v = emptyView();
                 swapViewAt(b, v);
 
                 characterGridAdapter.setButton(positionInChars, b);
             });
+            if(btnAddListener != null){
+                btnAddListener.apply(getCurrentWord());
+            }
+            if(lastBtnAddListener != null){
+                if(!canSwap()){
+                    lastBtnAddListener.apply(getCurrentWord());
+                }
+            }
         }
+    }
+
+    private String getCurrentWord(){
+        StringBuilder builder = new StringBuilder();
+        for (LinearLayout layout : layoutRows) {
+            for (int i = 0; i < layout.getChildCount(); i++) {
+                View view = layout.getChildAt(i);
+                if (view instanceof Button) {
+                    Button button = (Button) view;
+                    builder.append(button.getText());
+                }else if(view instanceof TextView){
+                    TextView textView = (TextView) view;
+                    CharSequence text = textView.getText();
+                    if(text != null && text.length() != 0){
+                        if(textView.getText().charAt(0) == WORDS_MINUS)
+                            builder.append(WORDS_MINUS);
+                    }
+                } else if (view instanceof Space) {
+                    builder.append(WORDS_DELIMETER);
+                }
+            }
+        }
+        return builder.toString();
     }
 
     private boolean swapViewAt(View remove, View add) {
@@ -217,7 +249,7 @@ public class AnswerGrid {
             rowWidth = GAME_BUTTON_SIZE + VIEW_MARGIN;
             for (int j = 1; j < row.length(); j++) {
                 char c = (row.charAt(j));
-                if (c == WORDS_DELIMETER) {
+                if (c == WORDS_DELIMETER || c == WORDS_MINUS) {
                     rowWidth += GAME_SPACE_SIZE + VIEW_MARGIN;
                 } else {
                     rowWidth += GAME_BUTTON_SIZE + VIEW_MARGIN;
@@ -245,5 +277,25 @@ public class AnswerGrid {
 
         layoutRows = new ArrayList<>(5);
     }
+
+    public void setBtnAddListener(OnButtonAddListener btnAddListener) {
+        this.btnAddListener = btnAddListener;
+    }
+
+    public void setLastBtnAddListener(OnLastButtonAddListener lastBtnAddListener) {
+        this.lastBtnAddListener = lastBtnAddListener;
+    }
+
+
+    public interface OnButtonAddListener{
+        void apply(String st);
+    }
+
+    public interface OnLastButtonAddListener{
+        void apply(String st);
+    }
+
+
+
 
 }

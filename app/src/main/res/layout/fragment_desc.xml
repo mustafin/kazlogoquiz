@@ -25,9 +25,9 @@
 
             <ImageView
                 android:id="@+id/imageLogo"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-                android:layout_margin="5dp"
+                android:layout_width="@dimen/logo_size"
+                android:layout_height="@dimen/logo_size"
+                android:layout_margin="@dimen/logo_margin"
                 android:src="@drawable/logo_temp" />
 
             <ImageView
@@ -70,10 +70,15 @@
 
     <Button
         android:id="@+id/back"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:background="@drawable/big_back_but"
+        android:drawableLeft="@drawable/big_back_but_left_circle"
+        android:drawableStart="@drawable/big_back_but_left_circle"
+        android:text="@string/back"
+        android:textAppearance="@style/MainPlayBut"
         android:layout_marginBottom="@dimen/char_grid_bottom_margin" />
 
 

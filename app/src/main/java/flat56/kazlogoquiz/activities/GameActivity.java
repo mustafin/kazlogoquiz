@@ -1,15 +1,12 @@
 package flat56.kazlogoquiz.activities;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
 
 import flat56.kazlogoquiz.Dummy;
 import flat56.kazlogoquiz.R;
@@ -54,7 +51,7 @@ public class GameActivity extends AppCompatActivity implements OnFragmentInterac
         }
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.add(R.id.fragment, gameFragment);
+        transaction.replace(R.id.fragment, gameFragment);
         transaction.commit();
 
     }
@@ -87,8 +84,12 @@ public class GameActivity extends AppCompatActivity implements OnFragmentInterac
     }
 
     @Override
-    public void onFragmentAction(Uri uri) {
-
+    public void onFragmentAction() {
+        DescFragment descFragment = DescFragment.newInstance(levelPos, logoPos);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(R.anim.abc_fade_in, R.anim.abc_fade_out);
+        transaction.replace(R.id.fragment, descFragment);
+        transaction.commit();
     }
 
 

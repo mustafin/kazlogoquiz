@@ -25,5 +25,9 @@
     <dimen name="play_but_margin_bottom">32dp</dimen>
     <dimen name="button_text_size">10sp</dimen>
     <dimen name="char_grid_bottom_margin">10dp</dimen>
+    <dimen name="cell_logo_size">100dp</dimen>
+    <dimen name="cell_logo_margin">5dp</dimen>
+    <dimen name="logo_size">160dp</dimen>
+    <dimen name="logo_margin">8dp</dimen>
 
 </resources>

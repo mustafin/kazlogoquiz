@@ -12,9 +12,9 @@
         android:layout_centerHorizontal="true">
         <ImageView
             android:id="@+id/logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_width="@dimen/cell_logo_size"
+            android:layout_height="@dimen/cell_logo_size"
+            android:layout_margin="@dimen/cell_logo_margin"
             android:src="@drawable/logo_temp" />
 
 

@@ -30,6 +30,7 @@
         <item name="android:background">@drawable/main_play_but</item>
         <item name="android:fontFamily">sans-serif-thin</item>
         <item name="android:textSize">@dimen/button_text_size</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
 
