@@ -19,6 +19,8 @@ public class Logo {
     private int points;
     private boolean answered;
 
+    private int levelId = 1;
+
     public Logo(String path, String correctRu, String correctKz, String charsRu, String charsKz, String description) {
         this.path = path;
         this.correctRu = correctRu;
@@ -126,5 +128,13 @@ public class Logo {
 
     public void setAnswered(boolean answered) {
         this.answered = answered;
+    }
+
+    public int getLevelId() {
+        return levelId;
+    }
+
+    public void setLevelId(int levelId) {
+        this.levelId = levelId;
     }
 }

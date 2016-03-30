@@ -17,7 +17,7 @@ import flat56.kazlogoquiz.models.Level;
 /**
  * Created by Murat on 31.01.2015.
  */
-public class LogosActivity extends AppCompatActivity{
+public class LogosActivity extends BaseActivity{
 
     public static String LEVEL_EXTRA = "LEVEL_EXTRA";
     private GridView grid;
@@ -29,10 +29,6 @@ public class LogosActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.logos);
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
 
         if(savedInstanceState != null){
             itemPos = savedInstanceState.getInt(LEVEL_EXTRA);
@@ -73,14 +69,4 @@ public class LogosActivity extends AppCompatActivity{
         curLevel = Dummy.levelList.get(itemPos);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 }

@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "logos": [
+      {
+        "id": 1,
+        "path": "asd.png",
+        "correctRu": "asd",
+        "correctKz": "asd",
+        "charsRu": "asd",
+        "charsKz": "asd",
+        "description": "asdasd",
+        "points": 2
+      },
+      {
+        "id": 2,
+        "path": "asd.png",
+        "correctRu": "asd",
+        "correctKz": "asd",
+        "charsRu": "asd",
+        "charsKz": "asd",
+        "description": "asdasd",
+        "points": 2
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "logos": [
+      {
+        "id": 1,
+        "path": "asd.png",
+        "correctRu": "asd",
+        "correctKz": "asd",
+        "charsRu": "asd",
+        "charsKz": "asd",
+        "description": "asdasd",
+        "points": 2
+      },
+      {
+        "id": 2,
+        "path": "asd.png",
+        "correctRu": "asd",
+        "correctKz": "asd",
+        "charsRu": "asd",
+        "charsKz": "asd",
+        "description": "asdasd",
+        "points": 2
+      }
+    ]
+  }
+]

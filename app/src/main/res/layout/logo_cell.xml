@@ -15,7 +15,7 @@
             android:layout_width="@dimen/cell_logo_size"
             android:layout_height="@dimen/cell_logo_size"
             android:layout_margin="@dimen/cell_logo_margin"
-            android:src="@drawable/logo_temp" />
+            android:src="@drawable/logo_temp_1" />
 
 
         <ImageView

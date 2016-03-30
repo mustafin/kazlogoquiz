@@ -9,6 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.annimon.stream.Stream;
+
 import java.util.List;
 import java.util.Locale;
 

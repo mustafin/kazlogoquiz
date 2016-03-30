@@ -25,7 +25,6 @@ public class MainActivity extends Activity {
     private ImageView share;
     private ImageView like;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +41,6 @@ public class MainActivity extends Activity {
             startActivity(intent);
         });
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -64,5 +62,11 @@ public class MainActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    //onclick
+    public void openDirectory(View view){
+        Intent intent = new Intent(MainActivity.this, DirectoryActivity.class);
+        startActivity(intent);
     }
 }

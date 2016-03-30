@@ -11,6 +11,7 @@ public class Level {
     private int id;
     private int points;
     private int logosFound;
+    //TODO remove
     private int logosCount;
     private boolean opened;
     private List<Logo> logos;
