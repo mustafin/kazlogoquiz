@@ -14,9 +14,9 @@ import flat56.kazlogoquiz.R;
 import flat56.kazlogoquiz.activities.fragments.DescFragment;
 import flat56.kazlogoquiz.activities.fragments.GameFragment;
 import flat56.kazlogoquiz.activities.fragments.OnFragmentInteractionListener;
-import flat56.kazlogoquiz.models.Logo;
+import flat56.kazlogoquiz.domain.models.Logo;
 
-public class GameActivity extends AppCompatActivity implements OnFragmentInteractionListener{
+public class GameActivity extends BaseActivity implements OnFragmentInteractionListener{
 
     public static String LOGO_EXTRA = "LOGO_EXTRA";
     private int levelPos;
@@ -74,17 +74,6 @@ public class GameActivity extends AppCompatActivity implements OnFragmentInterac
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-    @Override
     public void onFragmentAction() {
         DescFragment descFragment = DescFragment.newInstance(levelPos, logoPos);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -96,7 +85,8 @@ public class GameActivity extends AppCompatActivity implements OnFragmentInterac
 
 
     public void goBack(View v){
-        NavUtils.navigateUpFromSameTask(this);
+        super.onBackPressed();
+
     }
 
 

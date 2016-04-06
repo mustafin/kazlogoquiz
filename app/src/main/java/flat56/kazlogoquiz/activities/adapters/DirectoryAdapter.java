@@ -7,34 +7,45 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.SectionIndexer;
 import android.widget.TextView;
 
-import com.annimon.stream.Collectors;
-import com.annimon.stream.Stream;
-
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Set;
 
 import flat56.kazlogoquiz.R;
-import flat56.kazlogoquiz.models.Logo;
+import flat56.kazlogoquiz.domain.models.Logo;
 
 /**
  * Created by MusMB on 30.03.2016.
  */
-public class DirectoryAdapter extends ArrayAdapter<Logo> {
+public class DirectoryAdapter extends ArrayAdapter<Logo> implements SectionIndexer {
 
     private List<Logo> logos;
     private Context context;
-
-    public static class ViewHolder{
-        TextView letter;
-        ImageView logoImage;
-        TextView title;
-    }
+    private HashMap<String, Integer> mapIndex;
+    private String[] sections;
 
     public DirectoryAdapter(Context context, int resource, List<Logo> objects) {
         super(context, resource, objects);
         this.context = context;
         this.logos = objects;
+
+        mapIndex = new LinkedHashMap<>();
+
+        for (int x = 0; x < objects.size(); x++) {
+            Logo fruit = objects.get(x);
+            String ch = fruit.getCorrect().substring(0, 1);
+            ch = ch.toUpperCase();
+            if (!mapIndex.containsKey(ch))
+                mapIndex.put(ch, x);
+        }
+        Set<String> indexes = mapIndex.keySet();
+
+        sections = new String[indexes.size()];
+        indexes.toArray(sections);
     }
 
     @Override
@@ -51,13 +62,13 @@ public class DirectoryAdapter extends ArrayAdapter<Logo> {
             viewHolder.logoImage = (ImageView) convertView.findViewById(R.id.logo);
             viewHolder.title = (TextView) convertView.findViewById(R.id.title);
             convertView.setTag(viewHolder);
-        }else{
+        } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        if(isFirstSameLetter(position)) {
+        if (isFirstSameLetter(position)) {
             viewHolder.letter.setText(String.valueOf(logo.getCorrect().toUpperCase().charAt(0)));
-        }else{
+        } else {
             viewHolder.letter.setText("");
         }
         viewHolder.title.setText(logo.getCorrect());
@@ -65,17 +76,10 @@ public class DirectoryAdapter extends ArrayAdapter<Logo> {
         return convertView;
     }
 
-    private boolean isFirstSameLetter(int position){
-        if(position == 0) return true;
-        else {
-            String curWord = getItem(position).getCorrect().toUpperCase();
-            String prevWord = getItem(position - 1).getCorrect().toUpperCase();
-            char curvLet = curWord.charAt(0);
-            char prevLet = prevWord.charAt(0);
-            return curvLet != prevLet;
-        }
+    private boolean isFirstSameLetter(int position) {
+        String curWord = getItem(position).getCorrect().substring(0, 1).toUpperCase();
+        return mapIndex.get(curWord) == position;
     }
-
 
     @Override
     public Logo getItem(int position) {
@@ -85,5 +89,26 @@ public class DirectoryAdapter extends ArrayAdapter<Logo> {
     @Override
     public int getCount() {
         return logos.size();
+    }
+
+    @Override
+    public Object[] getSections() {
+        return sections;
+    }
+
+    @Override
+    public int getPositionForSection(int sectionIndex) {
+        return mapIndex.get(sections[sectionIndex]);
+    }
+
+    @Override
+    public int getSectionForPosition(int position) {
+        return 0;
+    }
+
+    public static class ViewHolder {
+        TextView letter;
+        ImageView logoImage;
+        TextView title;
     }
 }

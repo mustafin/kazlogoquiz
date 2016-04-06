@@ -1,9 +1,4 @@
-package flat56.kazlogoquiz.models;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
+package flat56.kazlogoquiz.domain.models;
 
 /**
  * Created by Murat on 31.01.2015.
@@ -11,6 +6,7 @@ import java.util.Locale;
 public class Logo {
 
     private String path;
+    private String pathComplete;
     private String correctRu;
     private String correctKz;
     private String charsRu;
@@ -21,8 +17,9 @@ public class Logo {
 
     private int levelId = 1;
 
-    public Logo(String path, String correctRu, String correctKz, String charsRu, String charsKz, String description) {
+    public Logo(String path, String pathComplete, String correctRu, String correctKz, String charsRu, String charsKz, String description) {
         this.path = path;
+        this.pathComplete = pathComplete;
         this.correctRu = correctRu;
         this.correctKz = correctKz;
         this.charsRu = charsRu;
@@ -30,9 +27,10 @@ public class Logo {
         this.description = description;
     }
 
-    public Logo(String path, String correctRu, String correctKz,
+    public Logo(String path, String pathComplete, String correctRu, String correctKz,
                 String charsRu, String charsKz, String description, int points) {
         this.path = path;
+        this.pathComplete = pathComplete;
         this.correctRu = correctRu;
         this.correctKz = correctKz;
         this.charsRu = charsRu;
@@ -41,9 +39,10 @@ public class Logo {
         this.points = points;
     }
 
-    public Logo(String path, String correctRu, String correctKz,
+    public Logo(String path, String pathComplete, String correctRu, String correctKz,
                 String charsRu, String charsKz, String description, int points, boolean answered) {
         this.path = path;
+        this.pathComplete = pathComplete;
         this.correctRu = correctRu;
         this.correctKz = correctKz;
         this.charsRu = charsRu;
@@ -53,7 +52,8 @@ public class Logo {
         this.answered = answered;
     }
 
-    public Logo(){}
+    public Logo() {
+    }
 
     public String getPath() {
         return path;
@@ -95,14 +95,14 @@ public class Logo {
         this.charsKz = charsKz;
     }
 
-    public String getChars(){
+    public String getChars() {
         //TODO LOCALE
 //        return Locale.getDefault()
         return charsRu;
     }
 
 
-    public String getCorrect(){
+    public String getCorrect() {
         return correctRu;
     }
 
@@ -137,4 +137,14 @@ public class Logo {
     public void setLevelId(int levelId) {
         this.levelId = levelId;
     }
+
+    public String getPathComplete() {
+        return pathComplete;
+    }
+
+    public void setPathComplete(String pathComplete) {
+        this.pathComplete = pathComplete;
+    }
+
+
 }

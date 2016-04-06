@@ -4,26 +4,27 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import flat56.kazlogoquiz.models.Level;
-import flat56.kazlogoquiz.models.Logo;
+import flat56.kazlogoquiz.domain.models.Level;
+import flat56.kazlogoquiz.domain.models.Logo;
 
 /**
  * Created by musta on 2016-03-16.
  */
 public class Dummy {
 
+    static String pathComplete = "raasd.png";
+
     public static Logo[] logos = {
-        new Logo("raymbek.png", "ааимы бек\nфыуафп", "цууфы", "реомиклбеджвуаеу", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 2, true),
-        new Logo("raymbek.png", "Привет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true),
-        new Logo("raymbek.png", "Привет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true),
-        new Logo("raymbek.png", "Привет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true),
-        new Logo("raymbek.png", "мурат", "мурат", "рамуорта", "цужафы", "Мурат это такой человек кароче \n хорошиий такой", 3),
-        new Logo("raymbek.png", "человек", "человек", "чоелшошвщекк", "чоелшошвщекк", "Как одгадал? Тут картинки нет лол", 1),
-        new Logo("raymbek.png", "раимы бек\nфыуафп", "цууфы", "реомиклбеджвуаеу", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 2)
+        new Logo("raymbek.png", pathComplete, "ааимы бек\nфыуафп", "цууфы", "реомиклбеджвуаеу", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 2, true),
+        new Logo("raymbek.png", pathComplete, "Привет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true),
+        new Logo("raymbek.png", pathComplete, "Привет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true),
+        new Logo("raymbek.png", pathComplete, "Привет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true),
+        new Logo("raymbek.png", pathComplete, "мурат", "мурат", "рамуорта", "цужафы", "Мурат это такой человек кароче \n хорошиий такой", 3),
+        new Logo("raymbek.png", pathComplete, "человек", "человек", "чоелшошвщекк", "чоелшошвщекк", "Как одгадал? Тут картинки нет лол", 1),
+        new Logo("raymbek.png", pathComplete, "раимы бек\nфыуафп", "цууфы", "реомиклбеджвуаеу", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 2)
     };
 
     public static List<Logo> logoList = new ArrayList<>(Arrays.asList(logos));
-
 
     public static Level[] levels = {
         new Level(1, 40, 23, 40, true, logoList),
@@ -35,46 +36,90 @@ public class Dummy {
 
     public static List<Level> levelList = new ArrayList<>(Arrays.asList(levels));
 
-
     public static List<Logo> moreLogos = logoList;
     static {
-        moreLogos.add(new Logo("raymbek.png", "ааимы бек\nфыуафп", "цууфы", "реомиклбеджвуаеу", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 2, true));
-        moreLogos.add(new Logo("raymbek.png", "Привет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
-        moreLogos.add(new Logo("raymbek.png", "рривет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
-        moreLogos.add(new Logo("raymbek.png", "рривет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
-        moreLogos.add(new Logo("raymbek.png", "сурат", "мурат", "рамуорта", "цужафы", "Мурат это такой человек кароче \n хорошиий такой", 3));
-        moreLogos.add(new Logo("raymbek.png", "иеловек", "человек", "чоелшошвщекк", "чоелшошвщекк", "Как одгадал? Тут картинки нет лол", 1));
-        moreLogos.add(new Logo("raymbek.png", "раимы бек\nфыуафп", "цууфы", "реомиклбеджвуаеу", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 2));
-        moreLogos.add(new Logo("raymbek.png", "ааимы бек\nфыуафп", "цууфы", "реомиклбеджвуаеу", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 2, true));
-        moreLogos.add(new Logo("raymbek.png", "привет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
-        moreLogos.add(new Logo("raymbek.png", "рривет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
-        moreLogos.add(new Logo("raymbek.png", "Привет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
-        moreLogos.add(new Logo("raymbek.png", "рурат", "мурат", "рамуорта", "цужафы", "Мурат это такой человек кароче \n хорошиий такой", 3));
-        moreLogos.add(new Logo("raymbek.png", "ееловек", "человек", "чоелшошвщекк", "чоелшошвщекк", "Как одгадал? Тут картинки нет лол", 1));
-        moreLogos.add(new Logo("raymbek.png", "наимы бек\nфыуафп", "цууфы", "реомиклбеджвуаеу", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 2));
-        moreLogos.add(new Logo("raymbek.png", "ваимы бек\nфыуафп", "цууфы", "реомиклбеджвуаеу", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 2, true));
-        moreLogos.add(new Logo("raymbek.png", "аривет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
-        moreLogos.add(new Logo("raymbek.png", "привет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
-        moreLogos.add(new Logo("raymbek.png", "аривет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
-        moreLogos.add(new Logo("raymbek.png", "курат", "мурат", "рамуорта", "цужафы", "Мурат это такой человек кароче \n хорошиий такой", 3));
-        moreLogos.add(new Logo("raymbek.png", "оеловек", "человек", "чоелшошвщекк", "чоелшошвщекк", "Как одгадал? Тут картинки нет лол", 1));
-        moreLogos.add(new Logo("raymbek.png", "лаимы бек\nфыуафп", "цууфы", "реомиклбеджвуаеу", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 2));
-        moreLogos.add(new Logo("raymbek.png", "уаимы бек\nфыуафп", "цууфы", "реомиклбеджвуаеу", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 2, true));
-        moreLogos.add(new Logo("raymbek.png", "лривет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
-        moreLogos.add(new Logo("raymbek.png", "лривет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
-        moreLogos.add(new Logo("raymbek.png", "дривет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
-        moreLogos.add(new Logo("raymbek.png", "мурат", "мурат", "рамуорта", "цужафы", "Мурат это такой человек кароче \n хорошиий такой", 3));
-        moreLogos.add(new Logo("raymbek.png", "меловек", "человек", "чоелшошвщекк", "чоелшошвщекк", "Как одгадал? Тут картинки нет лол", 1));
-        moreLogos.add(new Logo("raymbek.png", "маимы бек\nфыуафп", "цууфы", "реомиклбеджвуаеу", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 2));
-        moreLogos.add(new Logo("raymbek.png", "каимы бек\nфыуафп", "цууфы", "реомиклбеджвуаеу", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 2, true));
-        moreLogos.add(new Logo("raymbek.png", "кривет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
-        moreLogos.add(new Logo("raymbek.png", "кривет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
-        moreLogos.add(new Logo("raymbek.png", "уривет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
-        moreLogos.add(new Logo("raymbek.png", "пурат", "мурат", "рамуорта", "цужафы", "Мурат это такой человек кароче \n хорошиий такой", 3));
-        moreLogos.add(new Logo("raymbek.png", "веловек", "человек", "чоелшошвщекк", "чоелшошвщекк", "Как одгадал? Тут картинки нет лол", 1));
-        moreLogos.add(new Logo("raymbek.png", "ваимы бек\nфыуафп", "цууфы", "реомиклбеджвуаеу", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 2));
-
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "ааимы бек\nфыуафп", "цууфы", "реомиклбеджвуаеу", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 2, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "Привет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "рривет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "рривет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "сурат", "мурат", "рамуорта", "цужафы", "Мурат это такой человек кароче \n хорошиий такой", 3));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "иеловек", "человек", "чоелшошвщекк", "чоелшошвщекк", "Как одгадал? Тут картинки нет лол", 1));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "раимы бек\nфыуафп", "цууфы", "реомиклбеджвуаеу", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 2));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "ааимы бек\nфыуафп", "цууфы", "реомиклбеджвуаеу", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 2, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "привет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "рривет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "Привет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "рурат", "мурат", "рамуорта", "цужафы", "Мурат это такой человек кароче \n хорошиий такой", 3));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "ееловек", "человек", "чоелшошвщекк", "чоелшошвщекк", "Как одгадал? Тут картинки нет лол", 1));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "наимы бек\nфыуафп", "цууфы", "реомиклбеджвуаеу", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 2));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "ваимы бек\nфыуафп", "цууфы", "реомиклбеджвуаеу", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 2, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "аривет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "привет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "аривет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "курат", "мурат", "рамуорта", "цужафы", "Мурат это такой человек кароче \n хорошиий такой", 3));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "оеловек", "человек", "чоелшошвщекк", "чоелшошвщекк", "Как одгадал? Тут картинки нет лол", 1));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "лаимы бек\nфыуафп", "цууфы", "реомиклбеджвуаеу", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 2));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "уаимы бек\nфыуафп", "цууфы", "реомиклбеджвуаеу", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 2, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "лривет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "лривет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "дривет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "мурат", "мурат", "рамуорта", "цужафы", "Мурат это такой человек кароче \n хорошиий такой", 3));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "меловек", "человек", "чоелшошвщекк", "чоелшошвщекк", "Как одгадал? Тут картинки нет лол", 1));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "маимы бек\nфыуафп", "цууфы", "реомиклбеджвуаеу", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 2));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "каимы бек\nфыуафп", "цууфы", "реомиклбеджвуаеу", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 2, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "кривет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "кривет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "уривет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "пурат", "мурат", "рамуорта", "цужафы", "Мурат это такой человек кароче \n хорошиий такой", 3));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "веловек", "человек", "чоелшошвщекк", "чоелшошвщекк", "Как одгадал? Тут картинки нет лол", 1));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "ваимы бек\nфыуафп", "цууфы", "реомиклбеджвуаеу", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 2));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "рурат", "мурат", "рамуорта", "цужафы", "Мурат это такой человек кароче \n хорошиий такой", 3));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "ееловек", "человек", "чоелшошвщекк", "чоелшошвщекк", "Как одгадал? Тут картинки нет лол", 1));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "наимы бек\nфыуафп", "цууфы", "реомиклбеджвуаеу", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 2));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "ваимы бек\nфыуафп", "цууфы", "реомиклбеджвуаеу", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 2, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "аривет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "привет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "аривет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "курат", "мурат", "рамуорта", "цужафы", "Мурат это такой человек кароче \n хорошиий такой", 3));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "оеловек", "человек", "чоелшошвщекк", "чоелшошвщекк", "Как одгадал? Тут картинки нет лол", 1));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "лаимы бек\nфыуафп", "цууфы", "реомиклбеджвуаеу", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 2));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "уаимы бек\nфыуафп", "цууфы", "реомиклбеджвуаеу", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 2, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "лривет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "лривет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "дривет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "мурат", "мурат", "рамуорта", "цужафы", "Мурат это такой человек кароче \n хорошиий такой", 3));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "меловек", "человек", "чоелшошвщекк", "чоелшошвщекк", "Как одгадал? Тут картинки нет лол", 1));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "маимы бек\nфыуафп", "цууфы", "реомиклбеджвуаеу", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 2));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "каимы бек\nфыуафп", "цууфы", "реомиклбеджвуаеу", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 2, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "кривет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "кривет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "уривет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "пурат", "мурат", "рамуорта", "цужафы", "Мурат это такой человек кароче \n хорошиий такой", 3));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "веловек", "человек", "чоелшошвщекк", "чоелшошвщекк", "Как одгадал? Тут картинки нет лол", 1));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "ваимы бек\nфыуафп", "цууфы", "реомиклбеджвуаеу", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 2));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "рурат", "мурат", "рамуорта", "цужафы", "Мурат это такой человек кароче \n хорошиий такой", 3));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "ееловек", "человек", "чоелшошвщекк", "чоелшошвщекк", "Как одгадал? Тут картинки нет лол", 1));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "наимы бек\nфыуафп", "цууфы", "реомиклбеджвуаеу", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 2));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "ваимы бек\nфыуафп", "цууфы", "реомиклбеджвуаеу", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 2, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "аривет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "привет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "аривет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "курат", "мурат", "рамуорта", "цужафы", "Мурат это такой человек кароче \n хорошиий такой", 3));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "оеловек", "человек", "чоелшошвщекк", "чоелшошвщекк", "Как одгадал? Тут картинки нет лол", 1));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "лаимы бек\nфыуафп", "цууфы", "реомиклбеджвуаеу", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 2));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "уаимы бек\nфыуафп", "цууфы", "реомиклбеджвуаеу", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 2, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "лривет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "лривет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "дривет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "мурат", "мурат", "рамуорта", "цужафы", "Мурат это такой человек кароче \n хорошиий такой", 3));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "меловек", "человек", "чоелшошвщекк", "чоелшошвщекк", "Как одгадал? Тут картинки нет лол", 1));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "маимы бек\nфыуафп", "цууфы", "реомиклбеджвуаеу", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 2));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "каимы бек\nфыуафп", "цууфы", "реомиклбеджвуаеу", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 2, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "кривет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "кривет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "уривет", "цууфы", "поветрифы", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 3, true));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "пурат", "мурат", "рамуорта", "цужафы", "Мурат это такой человек кароче \n хорошиий такой", 3));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "веловек", "человек", "чоелшошвщекк", "чоелшошвщекк", "Как одгадал? Тут картинки нет лол", 1));
+        moreLogos.add(new Logo("raymbek.png", pathComplete, "ваимы бек\nфыуафп", "цууфы", "реомиклбеджвуаеу", "цужафы", "Рымбефыт фышв фшыовщф \n фывщл фщузлафу", 2));
     }
-
-
 }

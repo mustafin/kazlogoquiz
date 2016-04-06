@@ -2,17 +2,13 @@ package flat56.kazlogoquiz.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
 import android.widget.GridView;
 import android.widget.Toast;
 
 import flat56.kazlogoquiz.Dummy;
 import flat56.kazlogoquiz.R;
 import flat56.kazlogoquiz.activities.adapters.LogosAdapter;
-import flat56.kazlogoquiz.models.Level;
+import flat56.kazlogoquiz.domain.models.Level;
 
 /**
  * Created by Murat on 31.01.2015.
@@ -50,6 +46,7 @@ public class LogosActivity extends BaseActivity{
                 intent.putExtra(GameActivity.LOGO_EXTRA, position);
                 intent.putExtra(LEVEL_EXTRA, itemPos);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
             }));
         }

@@ -1,5 +1,6 @@
 package flat56.kazlogoquiz.activities.fragments;
 
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -16,7 +18,8 @@ import android.widget.TextView;
 import flat56.kazlogoquiz.Dummy;
 import flat56.kazlogoquiz.R;
 import flat56.kazlogoquiz.activities.LogosActivity;
-import flat56.kazlogoquiz.models.Logo;
+import flat56.kazlogoquiz.animations.ArcTranslateAnimation;
+import flat56.kazlogoquiz.domain.models.Logo;
 
 public class DescFragment extends Fragment {
     public static final String LOGO_EXTRA = "LOGO_EXTRA";
@@ -66,7 +69,7 @@ public class DescFragment extends Fragment {
         TextView description = (TextView) view.findViewById(R.id.description);
         Button back = (Button) view.findViewById(R.id.back);
         LinearLayout points = (LinearLayout) view.findViewById(R.id.points);
-
+        points.setClipChildren(false);
         for (int i = 0; i < logo.getPoints(); i++) {
             ImageView point = new ImageView(getActivity().getBaseContext());
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -74,6 +77,13 @@ public class DescFragment extends Fragment {
             point.setLayoutParams(params);
             point.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.icon_tenge_medium));
             points.addView(point);
+
+//
+//            ArcTranslateAnimation anim = new ArcTranslateAnimation(0, 100 , 0, -100);
+//            anim.setDuration(500);
+//            anim.setFillAfter(true);
+//
+//            point.startAnimation(anim);
         }
 
         title.setText(logo.getCorrect());

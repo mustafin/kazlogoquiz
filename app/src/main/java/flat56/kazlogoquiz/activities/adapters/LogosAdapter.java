@@ -1,22 +1,18 @@
 package flat56.kazlogoquiz.activities.adapters;
 
 import android.content.Context;
-import android.opengl.Visibility;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import java.util.List;
-import java.util.Locale;
 
 import flat56.kazlogoquiz.R;
-import flat56.kazlogoquiz.models.Logo;
+import flat56.kazlogoquiz.domain.models.Logo;
 
 /**
  * Created by Murat on 01.02.2015.

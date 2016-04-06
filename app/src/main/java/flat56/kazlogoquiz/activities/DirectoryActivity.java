@@ -12,8 +12,7 @@ import java.util.List;
 import flat56.kazlogoquiz.Dummy;
 import flat56.kazlogoquiz.R;
 import flat56.kazlogoquiz.activities.adapters.DirectoryAdapter;
-import flat56.kazlogoquiz.activities.adapters.LevelsAdapter;
-import flat56.kazlogoquiz.models.Logo;
+import flat56.kazlogoquiz.domain.models.Logo;
 
 public class DirectoryActivity extends BaseActivity {
 
@@ -23,10 +22,13 @@ public class DirectoryActivity extends BaseActivity {
         setContentView(R.layout.activity_directory);
         ListView listView = (ListView) findViewById(R.id.listView);
 
-        List<Logo> logos = Stream.of(Dummy.moreLogos).filter(Logo::isAnswered).sortBy(l -> l.getCorrect().toUpperCase()).collect(Collectors.toList());
-
+        List<Logo> logos = Stream.of(Dummy.moreLogos)
+                .filter(Logo::isAnswered)
+                .sortBy(l -> l.getCorrect().toUpperCase())
+                .collect(Collectors.toList());
 
         DirectoryAdapter adapter = new DirectoryAdapter(this, R.layout.directory_item, logos);
+        listView.setFastScrollEnabled(true);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener((parent, view, position, id) -> {
             Logo item = adapter.getItem(position);
@@ -34,6 +36,8 @@ public class DirectoryActivity extends BaseActivity {
             intent.putExtra(GameActivity.LOGO_EXTRA, position);
             intent.putExtra(LogosActivity.LEVEL_EXTRA, item.getLevelId());
             startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
         });
     }
 }

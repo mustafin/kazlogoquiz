@@ -2,10 +2,8 @@ package flat56.kazlogoquiz.activities.fragments;
 
 import android.app.Activity;
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,7 +18,7 @@ import flat56.kazlogoquiz.R;
 import flat56.kazlogoquiz.activities.LogosActivity;
 import flat56.kazlogoquiz.activities.adapters.CharacterGridAdapter;
 import flat56.kazlogoquiz.activities.views.AnswerGrid;
-import flat56.kazlogoquiz.models.Logo;
+import flat56.kazlogoquiz.domain.models.Logo;
 
 public class GameFragment extends Fragment {
 
@@ -84,7 +82,7 @@ public class GameFragment extends Fragment {
             logo = Dummy.levelList.get(levelPos).getLogos().get(logoPos);
         }
 
-        answerGrid = new AnswerGrid(context, logo.getCorrect());
+        answerGrid = new AnswerGrid(context, logo.getCorrect(), answerGridCont);
         characterGridAdapter = new CharacterGridAdapter(context, charsGrid, logo.getChars(), 0);
         characterGridAdapter.setAnswerGrid(answerGrid);
         answerGrid.setCharacterGridAdapter(characterGridAdapter);
@@ -102,8 +100,10 @@ public class GameFragment extends Fragment {
 
     public void swapScreens(String result) {
         if (mListener != null) {
-            if(result.equals(logo.getCorrect()))
+            if(result.equals(logo.getCorrect())) {
                 mListener.onFragmentAction();
+            }else
+                answerGrid.animateShake();
         }
     }
 
@@ -135,7 +135,7 @@ public class GameFragment extends Fragment {
             points.addView(view);
 
         }
-        answerGrid.initAndAddTo(answerGridCont);
+        answerGrid.initAndAddToParent();
 
     }
 

@@ -9,13 +9,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.annimon.stream.Stream;
-
 import java.util.List;
 import java.util.Locale;
 
 import flat56.kazlogoquiz.R;
-import flat56.kazlogoquiz.models.Level;
+import flat56.kazlogoquiz.domain.models.Level;
 
 /**
  * Created by Murat on 31.01.2015.

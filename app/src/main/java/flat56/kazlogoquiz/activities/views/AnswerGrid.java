@@ -45,10 +45,12 @@ public class AnswerGrid {
     public static final char LINE_NEXT = '\u23CE';
     private OnButtonAddListener btnAddListener;
     private OnLastButtonAddListener lastBtnAddListener;
+    private ViewGroup parent;
 
-    public AnswerGrid(Context context, String answer) {
+    public AnswerGrid(Context context, String answer, ViewGroup parent) {
         this.context = context;
         this.answer = answer;
+        this.parent = parent;
 
 
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
@@ -65,7 +67,7 @@ public class AnswerGrid {
 
     }
 
-    public void initAndAddTo(ViewGroup parent) {
+    public void initAndAddToParent() {
         for (List<Character> chars : charsList) {
 
             LinearLayout linearLayout = initLinearLayout();
@@ -284,6 +286,12 @@ public class AnswerGrid {
 
     public void setLastBtnAddListener(OnLastButtonAddListener lastBtnAddListener) {
         this.lastBtnAddListener = lastBtnAddListener;
+    }
+
+    public void animateShake() {
+        AnimatorSet anim = (AnimatorSet) AnimatorInflater.loadAnimator(context, R.animator.shake);
+        anim.setTarget(parent);
+        anim.start();
     }
 
 

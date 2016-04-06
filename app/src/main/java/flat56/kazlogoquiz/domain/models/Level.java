@@ -1,4 +1,4 @@
-package flat56.kazlogoquiz.models;
+package flat56.kazlogoquiz.domain.models;
 
 import java.util.ArrayList;
 import java.util.List;

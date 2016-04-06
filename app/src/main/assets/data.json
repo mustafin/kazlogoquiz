@@ -5,6 +5,7 @@
       {
         "id": 1,
         "path": "asd.png",
+        "pathCorrect": "asd.png",
         "correctRu": "asd",
         "correctKz": "asd",
         "charsRu": "asd",
@@ -15,6 +16,7 @@
       {
         "id": 2,
         "path": "asd.png",
+        "pathCorrect": "asd.png",
         "correctRu": "asd",
         "correctKz": "asd",
         "charsRu": "asd",
@@ -30,6 +32,7 @@
       {
         "id": 1,
         "path": "asd.png",
+        "pathCorrect": "asd.png",
         "correctRu": "asd",
         "correctKz": "asd",
         "charsRu": "asd",
@@ -40,6 +43,7 @@
       {
         "id": 2,
         "path": "asd.png",
+        "pathCorrect": "asd.png",
         "correctRu": "asd",
         "correctKz": "asd",
         "charsRu": "asd",
