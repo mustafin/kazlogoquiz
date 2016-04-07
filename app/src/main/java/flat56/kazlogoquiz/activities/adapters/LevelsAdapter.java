@@ -49,12 +49,12 @@ public class LevelsAdapter extends ArrayAdapter<Level> {
         if(level.isOpened()) {
             ProgressBar progress = (ProgressBar) convertView.findViewById(R.id.progressBar);
             TextView progressText = (TextView) convertView.findViewById(R.id.progressText);
-            progress.setProgress(level.getLogosFound() * 100 / level.getLogosCount());
+            progress.setProgress(level.getLogosFound() * 100 / level.getLogos().size());
             progressText.setText(String.format(
                     Locale.getDefault(),
                     "%d / %d",
                     level.getLogosFound(),
-                    level.getLogosCount())
+                    level.getLogos().size())
             );
         }else{
             TextView guessMore = (TextView) convertView.findViewById(R.id.guess_more_text);

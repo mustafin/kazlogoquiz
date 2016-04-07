@@ -36,5 +36,6 @@
 
     <!-- DIRECTORY ITEM ROW -->
     <dimen name="dir_imag_margin">30dp</dimen>
+    <dimen name="row_card_elevation">3dp</dimen>
 
 </resources>

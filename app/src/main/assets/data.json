@@ -4,51 +4,53 @@
     "logos": [
       {
         "id": 1,
-        "path": "asd.png",
-        "pathCorrect": "asd.png",
-        "correctRu": "asd",
-        "correctKz": "asd",
-        "charsRu": "asd",
-        "charsKz": "asd",
-        "description": "asdasd",
-        "points": 2
+        "path": "logo_temp_2.png",
+        "pathCorrect": "logo_temp_2.png",
+        "correctRu": "dumb",
+        "correctKz": "dumb",
+        "charsRu": "doeueobm",
+        "charsKz": "doeueobm",
+        "description": "Some dummy description for developer do you understand lorem ipsum doler fucking amet amen wewen",
+        "points": 2,
+        "answered": true
       },
       {
         "id": 2,
-        "path": "asd.png",
-        "pathCorrect": "asd.png",
-        "correctRu": "asd",
-        "correctKz": "asd",
-        "charsRu": "asd",
-        "charsKz": "asd",
-        "description": "asdasd",
+        "path": "logo_temp_2.png",
+        "pathCorrect": "logo_temp_2.png",
+        "correctRu": "long answer",
+        "correctKz": "long answer",
+        "charsRu": "longanswerlongqu",
+        "charsKz": "longanswerlongqu",
+        "description": "Some dummy description WITH NEW LINE HERE \n for developer do you understand lorem ipsum doler fucking amet amen wewen",
         "points": 2
       }
-    ]
+    ],
+    "opened": true
   },
   {
     "id": 2,
     "logos": [
       {
-        "id": 1,
-        "path": "asd.png",
-        "pathCorrect": "asd.png",
-        "correctRu": "asd",
-        "correctKz": "asd",
-        "charsRu": "asd",
-        "charsKz": "asd",
-        "description": "asdasd",
+        "id": 3,
+        "path": "logo_temp_2.png",
+        "pathCorrect": "logo_temp_2.png",
+        "correctRu": "dumb",
+        "correctKz": "dumb",
+        "charsRu": "doeueobm",
+        "charsKz": "doeueobm",
+        "description": "Some dummy description for developer do you understand lorem ipsum doler fucking amet amen wewen",
         "points": 2
       },
       {
-        "id": 2,
-        "path": "asd.png",
-        "pathCorrect": "asd.png",
-        "correctRu": "asd",
-        "correctKz": "asd",
-        "charsRu": "asd",
-        "charsKz": "asd",
-        "description": "asdasd",
+        "id": 4,
+        "path": "logo_temp_2.png",
+        "pathCorrect": "logo_temp_2.png",
+        "correctRu": "dumb",
+        "correctKz": "dumb",
+        "charsRu": "doeueobm",
+        "charsKz": "doeueobm",
+        "description": "Some dummy description for developer do you understand lorem ipsum doler fucking amet amen wewen",
         "points": 2
       }
     ]

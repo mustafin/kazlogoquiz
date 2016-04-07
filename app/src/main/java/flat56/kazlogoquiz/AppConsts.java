@@ -5,6 +5,8 @@ package flat56.kazlogoquiz;
  */
 public class AppConsts {
 
+
+    public static final String DATA_FILE = "data.json";
     public static final String MY_PREFS_NAME = "LogoQuizPrefs";
 
 }

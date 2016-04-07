@@ -5,6 +5,7 @@ package flat56.kazlogoquiz.domain.models;
  */
 public class Logo {
 
+    private int id;
     private String path;
     private String pathComplete;
     private String correctRu;
@@ -15,9 +16,9 @@ public class Logo {
     private int points;
     private boolean answered;
 
-    private int levelId = 1;
+    private Level level;
 
-    public Logo(String path, String pathComplete, String correctRu, String correctKz, String charsRu, String charsKz, String description) {
+    public Logo(int id, String path, String pathComplete, String correctRu, String correctKz, String charsRu, String charsKz, String description) {
         this.path = path;
         this.pathComplete = pathComplete;
         this.correctRu = correctRu;
@@ -25,9 +26,11 @@ public class Logo {
         this.charsRu = charsRu;
         this.charsKz = charsKz;
         this.description = description;
+        this.id = id;
+
     }
 
-    public Logo(String path, String pathComplete, String correctRu, String correctKz,
+    public Logo(int id, String path, String pathComplete, String correctRu, String correctKz,
                 String charsRu, String charsKz, String description, int points) {
         this.path = path;
         this.pathComplete = pathComplete;
@@ -37,9 +40,10 @@ public class Logo {
         this.charsKz = charsKz;
         this.description = description;
         this.points = points;
+        this.id = id;
     }
 
-    public Logo(String path, String pathComplete, String correctRu, String correctKz,
+    public Logo(int id, String path, String pathComplete, String correctRu, String correctKz,
                 String charsRu, String charsKz, String description, int points, boolean answered) {
         this.path = path;
         this.pathComplete = pathComplete;
@@ -50,6 +54,7 @@ public class Logo {
         this.description = description;
         this.points = points;
         this.answered = answered;
+        this.id = id;
     }
 
     public Logo() {
@@ -130,12 +135,12 @@ public class Logo {
         this.answered = answered;
     }
 
-    public int getLevelId() {
-        return levelId;
+    public Level getLevel() {
+        return level;
     }
 
-    public void setLevelId(int levelId) {
-        this.levelId = levelId;
+    public void setLevel(Level level) {
+        this.level = level;
     }
 
     public String getPathComplete() {
@@ -146,5 +151,26 @@ public class Logo {
         this.pathComplete = pathComplete;
     }
 
+    @Override
+    public String toString() {
+        return "Logo{" +
+                "path='" + path + '\'' +
+                ", pathComplete='" + pathComplete + '\'' +
+                ", correctRu='" + correctRu + '\'' +
+                ", correctKz='" + correctKz + '\'' +
+                ", charsRu='" + charsRu + '\'' +
+                ", charsKz='" + charsKz + '\'' +
+                ", description='" + description + '\'' +
+                ", points=" + points +
+                ", answered=" + answered +
+                '}';
+    }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

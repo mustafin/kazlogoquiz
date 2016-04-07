@@ -1,5 +1,8 @@
 package flat56.kazlogoquiz.utils;
 
+import android.content.Context;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -26,6 +29,10 @@ public class MyUtils {
             }
         }
         return count;
+    }
+
+    public static void toast(Context context, String msg){
+        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
     }
 
 }

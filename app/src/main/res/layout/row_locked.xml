@@ -1,51 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:descendantFocusability="blocksDescendants"
     android:layout_width="match_parent"
     android:layout_height="@dimen/row_height"
-    android:background="@drawable/row_bg">
+    android:background="@drawable/row_bg"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/row_header"
         android:layout_alignParentTop="true"
-        android:paddingTop="@dimen/row_header_padding"
-        android:paddingLeft="@dimen/row_header_padding"
-        android:paddingStart="@dimen/row_header_padding"
-        android:paddingRight="@dimen/row_header_padding"
-        android:paddingEnd="@dimen/row_header_padding"
+        android:background="@drawable/row_header_bg_locked"
         android:paddingBottom="10dp"
-        android:background="@drawable/row_header_bg_locked">
+        android:paddingEnd="@dimen/row_header_padding"
+        android:paddingLeft="@dimen/row_header_padding"
+        android:paddingRight="@dimen/row_header_padding"
+        android:paddingStart="@dimen/row_header_padding"
+        android:paddingTop="@dimen/row_header_padding">
 
         <TextView
             android:id="@+id/levelTitle"
-            android:textAppearance="@style/RowTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="New Text"
-            />
+            android:textAppearance="@style/RowTitle" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
             android:layout_marginEnd="10dp"
-            android:src="@drawable/icon_lock"
-            />
+            android:layout_marginRight="10dp"
+            android:src="@drawable/icon_lock" />
 
     </RelativeLayout>
 
     <TextView
         android:id="@+id/guess_more_text"
-        android:layout_below="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/relativeLayout"
         android:gravity="center"
-        android:textColor="@color/main_black"/>
+        android:textColor="@color/main_black" />
 
 </RelativeLayout>

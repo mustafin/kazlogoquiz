@@ -3,13 +3,14 @@ package flat56.kazlogoquiz.activities;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.LayoutRes;
 import android.widget.ListView;
 
-import flat56.kazlogoquiz.Dummy;
 import flat56.kazlogoquiz.R;
 import flat56.kazlogoquiz.activities.adapters.LevelsAdapter;
+import flat56.kazlogoquiz.domain.models.Level;
 
-import static flat56.kazlogoquiz.AppConsts.*;
+import static flat56.kazlogoquiz.AppConsts.MY_PREFS_NAME;
 
 /**
  * Created by Murat on 27.01.2015.
@@ -20,22 +21,27 @@ public class LevelsActivity extends BaseActivity {
     private LevelsAdapter adapter;
 
     @Override
+    @LayoutRes
+    protected int contentView() {
+        return R.layout.levels;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.levels);
 
-        adapter = new LevelsAdapter(this, R.layout.row, Dummy.levelList);
+        adapter = new LevelsAdapter(this, R.layout.row, getLevels());
         list = (ListView)findViewById(R.id.list);
         list.setAdapter(adapter);
 
         list.setOnItemClickListener((parent, view, position, id) -> {
             Intent intent = new Intent(LevelsActivity.this, LogosActivity.class);
-            intent.putExtra(LogosActivity.LEVEL_EXTRA, position);
+            Level item = adapter.getItem(position);
+            intent.putExtra(LogosActivity.LEVEL_EXTRA, item.getId());
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
     }
-
 
     private void readPrefs(){
         SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);

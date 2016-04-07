@@ -1,6 +1,5 @@
 package flat56.kazlogoquiz.activities.fragments;
 
-import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -9,24 +8,29 @@ import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import flat56.kazlogoquiz.Dummy;
+import java.util.List;
+
 import flat56.kazlogoquiz.R;
 import flat56.kazlogoquiz.activities.LogosActivity;
-import flat56.kazlogoquiz.animations.ArcTranslateAnimation;
+import flat56.kazlogoquiz.domain.DataParser;
+import flat56.kazlogoquiz.domain.models.Level;
 import flat56.kazlogoquiz.domain.models.Logo;
+import flat56.kazlogoquiz.utils.DataUtils;
+
+import static flat56.kazlogoquiz.utils.DataUtils.*;
 
 public class DescFragment extends Fragment {
     public static final String LOGO_EXTRA = "LOGO_EXTRA";
     private Logo logo;
-    private int levelPos;
-    private int logoPos;
+    private int levelId;
+    private int logoId;
     private Context context;
+    private List<Level> data;
 
     private OnFragmentInteractionListener mListener;
 
@@ -48,12 +52,13 @@ public class DescFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+        DataParser parser = DataParser.getInstance(getActivity().getBaseContext());
+        data = parser.getLevels();
 
         if (getArguments() != null) {
-            levelPos = getArguments().getInt(LogosActivity.LEVEL_EXTRA);
-            logoPos = getArguments().getInt(LOGO_EXTRA);
-            logo = Dummy.levelList.get(levelPos).getLogos().get(logoPos);
+            levelId = getArguments().getInt(LogosActivity.LEVEL_EXTRA);
+            logoId = getArguments().getInt(LOGO_EXTRA);
+            logo = findLogo(data, levelId, logoId);
         }
     }
 

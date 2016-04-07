@@ -303,7 +303,4 @@ public class AnswerGrid {
         void apply(String st);
     }
 
-
-
-
 }
