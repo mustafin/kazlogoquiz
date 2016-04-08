@@ -3,6 +3,7 @@ package flat56.kazlogoquiz.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
+import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +34,12 @@ public class DirectoryActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if(toolbar != null)
+            toolbar.setBackgroundColor(getResources().getColor(R.color.main_green));
+
         ListView listView = (ListView) findViewById(R.id.listView);
 
         List<Logo> allLogos = new ArrayList<>();

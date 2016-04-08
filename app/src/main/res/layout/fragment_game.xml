@@ -86,7 +86,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/imageCont"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="2dp"
             android:layout_centerHorizontal="true"
             android:orientation="horizontal" />
 
@@ -111,7 +111,6 @@
             android:orientation="vertical"/>
 
     </FrameLayout>
-
 
     <FrameLayout
         android:layout_width="match_parent"

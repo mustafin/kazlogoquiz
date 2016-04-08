@@ -2,8 +2,9 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape
-            android:shape="rectangle">
-            <corners android:radius="@dimen/back_button_size"/>
+            android:shape="rectangle"
+            >
+            <corners android:radius="@dimen/back_button_radius"/>
             <solid android:color="@color/main_green_dark"/>
         </shape>
     </item>

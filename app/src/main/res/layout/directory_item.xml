@@ -6,10 +6,14 @@
 
     <TextView
         android:id="@+id/letter"
-        android:layout_width="10dp"
+        android:layout_width="@dimen/dir_imag_margin"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:textColor="@color/main_violet"
+        android:textSize="@dimen/abc_text_size_large_material"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_centerVertical="true" />
 
     <ImageView

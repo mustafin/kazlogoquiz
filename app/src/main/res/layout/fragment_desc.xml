@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/activity_padding"
-    tools:context="flat56.kazlogoquiz.activities.GameActivity">
+    tools:context="flat56.kazlogoquiz.activities.GameActivity"
+    android:clipToPadding="false"
+    android:clipChildren="false">
 
     <RelativeLayout
         android:id="@+id/logo_cont"
@@ -42,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/imageCont"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="2dp"
             android:orientation="horizontal" />
 
     </RelativeLayout>
@@ -62,27 +64,41 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/title"
         android:layout_centerHorizontal="true"
-        android:textSize="@dimen/desc_text_size"
-        android:gravity="center_horizontal" />
+        android:gravity="center_horizontal"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="@dimen/desc_text_size" />
 
-    <Button
-        android:id="@+id/back"
-        android:layout_width="match_parent"
+    <FrameLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/char_grid_bottom_margin"
-        android:layout_marginEnd="@dimen/activity_h_margin"
-        android:layout_marginLeft="@dimen/activity_h_margin"
-        android:layout_marginRight="@dimen/activity_h_margin"
-        android:layout_marginStart="@dimen/activity_h_margin"
-        android:background="@drawable/big_back_but"
-        android:drawableLeft="@drawable/big_back_but_left_circle"
-        android:drawableStart="@drawable/big_back_but_left_circle"
-        android:onClick="goBack"
-        android:paddingRight="@dimen/circle_button_size"
-        android:text="@string/back"
-        android:textAppearance="@style/MainPlayBut" />
+        android:clipToPadding="false"
+        android:clipChildren="false">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:clipChildren="false">
+
+            <Button
+                android:id="@+id/back"
+                android:layout_width="@dimen/back_button_width"
+                android:layout_height="@dimen/back_button_radius"
+                android:background="@drawable/big_back_but"
+                android:onClick="goBack"
+                android:text="@string/back"
+                android:textAppearance="@style/MainPlayBut" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="@dimen/back_button_radius"
+            android:layout_height="@dimen/back_button_radius"
+            android:layout_gravity="start"
+            android:src="@drawable/big_back_but_left_circle" />
+    </FrameLayout>
 
 
 </RelativeLayout>

@@ -11,8 +11,7 @@
         "charsRu": "doeueobm",
         "charsKz": "doeueobm",
         "description": "Some dummy description for developer do you understand lorem ipsum doler fucking amet amen wewen",
-        "points": 2,
-        "answered": true
+        "points": 2
       },
       {
         "id": 2,
@@ -25,8 +24,7 @@
         "description": "Some dummy description WITH NEW LINE HERE \n for developer do you understand lorem ipsum doler fucking amet amen wewen",
         "points": 2
       }
-    ],
-    "opened": true
+    ]
   },
   {
     "id": 2,
@@ -44,6 +42,141 @@
       },
       {
         "id": 4,
+        "path": "logo_temp_2.png",
+        "pathCorrect": "logo_temp_2.png",
+        "correctRu": "dumb",
+        "correctKz": "dumb",
+        "charsRu": "doeueobm",
+        "charsKz": "doeueobm",
+        "description": "Some dummy description for developer do you understand lorem ipsum doler fucking amet amen wewen",
+        "points": 2
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "logos": [
+      {
+        "id": 5,
+        "path": "logo_temp_2.png",
+        "pathCorrect": "logo_temp_2.png",
+        "correctRu": "dumb",
+        "correctKz": "dumb",
+        "charsRu": "doeueobm",
+        "charsKz": "doeueobm",
+        "description": "Some dummy description for developer do you understand lorem ipsum doler fucking amet amen wewen",
+        "points": 2
+      },
+      {
+        "id": 6,
+        "path": "logo_temp_2.png",
+        "pathCorrect": "logo_temp_2.png",
+        "correctRu": "dumb",
+        "correctKz": "dumb",
+        "charsRu": "doeueobm",
+        "charsKz": "doeueobm",
+        "description": "Some dummy description for developer do you understand lorem ipsum doler fucking amet amen wewen",
+        "points": 2
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "logos": [
+      {
+        "id": 7,
+        "path": "logo_temp_2.png",
+        "pathCorrect": "logo_temp_2.png",
+        "correctRu": "dumb",
+        "correctKz": "dumb",
+        "charsRu": "doeueobm",
+        "charsKz": "doeueobm",
+        "description": "Some dummy description for developer do you understand lorem ipsum doler fucking amet amen wewen",
+        "points": 2
+      },
+      {
+        "id": 8,
+        "path": "logo_temp_2.png",
+        "pathCorrect": "logo_temp_2.png",
+        "correctRu": "dumb",
+        "correctKz": "dumb",
+        "charsRu": "doeueobm",
+        "charsKz": "doeueobm",
+        "description": "Some dummy description for developer do you understand lorem ipsum doler fucking amet amen wewen",
+        "points": 2
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "logos": [
+      {
+        "id": 9,
+        "path": "logo_temp_2.png",
+        "pathCorrect": "logo_temp_2.png",
+        "correctRu": "dumb",
+        "correctKz": "dumb",
+        "charsRu": "doeueobm",
+        "charsKz": "doeueobm",
+        "description": "Some dummy description for developer do you understand lorem ipsum doler fucking amet amen wewen",
+        "points": 2
+      },
+      {
+        "id": 10,
+        "path": "logo_temp_2.png",
+        "pathCorrect": "logo_temp_2.png",
+        "correctRu": "dumb",
+        "correctKz": "dumb",
+        "charsRu": "doeueobm",
+        "charsKz": "doeueobm",
+        "description": "Some dummy description for developer do you understand lorem ipsum doler fucking amet amen wewen",
+        "points": 2
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "logos": [
+      {
+        "id": 11,
+        "path": "logo_temp_2.png",
+        "pathCorrect": "logo_temp_2.png",
+        "correctRu": "dumb",
+        "correctKz": "dumb",
+        "charsRu": "doeueobm",
+        "charsKz": "doeueobm",
+        "description": "Some dummy description for developer do you understand lorem ipsum doler fucking amet amen wewen",
+        "points": 2
+      },
+      {
+        "id": 12,
+        "path": "logo_temp_2.png",
+        "pathCorrect": "logo_temp_2.png",
+        "correctRu": "dumb",
+        "correctKz": "dumb",
+        "charsRu": "doeueobm",
+        "charsKz": "doeueobm",
+        "description": "Some dummy description for developer do you understand lorem ipsum doler fucking amet amen wewen",
+        "points": 2
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "logos": [
+      {
+        "id": 13,
+        "path": "logo_temp_2.png",
+        "pathCorrect": "logo_temp_2.png",
+        "correctRu": "dumb",
+        "correctKz": "dumb",
+        "charsRu": "doeueobm",
+        "charsKz": "doeueobm",
+        "description": "Some dummy description for developer do you understand lorem ipsum doler fucking amet amen wewen",
+        "points": 2
+      },
+      {
+        "id": 14,
         "path": "logo_temp_2.png",
         "pathCorrect": "logo_temp_2.png",
         "correctRu": "dumb",
