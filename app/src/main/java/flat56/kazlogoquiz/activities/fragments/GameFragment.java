@@ -21,9 +21,10 @@ import flat56.kazlogoquiz.activities.views.AnswerGrid;
 import flat56.kazlogoquiz.domain.DataParser;
 import flat56.kazlogoquiz.domain.models.Level;
 import flat56.kazlogoquiz.domain.models.Logo;
+import flat56.kazlogoquiz.domain.persistable.DataStateHandler;
 import flat56.kazlogoquiz.utils.DataUtils;
 
-import static flat56.kazlogoquiz.utils.DataUtils.*;
+import static flat56.kazlogoquiz.utils.DataUtils.findLogo;
 
 public class GameFragment extends Fragment {
 
@@ -60,7 +61,7 @@ public class GameFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         DataParser parser = DataParser.getInstance(getActivity().getBaseContext());
-        data = parser.getLevels();
+        data = parser.getCachedLevels();
 
         if (getArguments() != null) {
             levelId = getArguments().getInt(LogosActivity.LEVEL_EXTRA);
@@ -77,7 +78,7 @@ public class GameFragment extends Fragment {
 
         if (context == null)
             context = getActivity().getBaseContext();
-        // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.fragment_game, container, false);
 
         imageLogo = (ImageView) view.findViewById(R.id.imageLogo);
@@ -90,26 +91,34 @@ public class GameFragment extends Fragment {
             logoId = savedInstanceState.getInt(LOGO_EXTRA);
             logo = findLogo(data, levelId, logoId);
         }
+        if (logo != null) {
 
-        answerGrid = new AnswerGrid(context, logo.getCorrect(), answerGridCont);
-        characterGridAdapter = new CharacterGridAdapter(context, charsGrid, logo.getChars(), 0);
-        characterGridAdapter.setAnswerGrid(answerGrid);
-        answerGrid.setCharacterGridAdapter(characterGridAdapter);
+            answerGrid = new AnswerGrid(context, logo.getCorrect(), answerGridCont);
+            characterGridAdapter = new CharacterGridAdapter(context, charsGrid, logo.getChars(), 0);
+            characterGridAdapter.setAnswerGrid(answerGrid);
+            answerGrid.setCharacterGridAdapter(characterGridAdapter);
 
-        charsGrid.setAdapter(characterGridAdapter);
+            charsGrid.setAdapter(characterGridAdapter);
 
-        fillData();
+            fillData();
 
 //        answerGrid.setBtnAddListener(st -> Log.i("CURR WORD IS", st));
-        answerGrid.setLastBtnAddListener(this::swapScreens);
+            answerGrid.setLastBtnAddListener(this::checkAnswer);
 
+        }
         return view;
 
     }
 
-    public void swapScreens(String result) {
+    public void checkAnswer(String result) {
         if (mListener != null) {
             if (result.equals(logo.getCorrect())) {
+                logo.setAnswered(true);
+                DataStateHandler dataStateHandler = DataStateHandler.getInstance(context);
+                dataStateHandler.addLevelPoints(levelId, logo.getPoints());
+                dataStateHandler.answerLogo(logoId);
+                int i = DataUtils.leftToOpenLevel(data, levelId);
+                if(i == 0) dataStateHandler.openLevel(levelId);
                 mListener.onFragmentAction();
             } else
                 answerGrid.animateShake();

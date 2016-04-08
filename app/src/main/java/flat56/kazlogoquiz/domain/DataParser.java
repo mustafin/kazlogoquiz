@@ -1,9 +1,7 @@
 package flat56.kazlogoquiz.domain;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.content.res.AssetManager;
-import android.provider.ContactsContract;
 import android.util.Log;
 
 import com.annimon.stream.Stream;
@@ -22,6 +20,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import flat56.kazlogoquiz.AppConsts;
 import flat56.kazlogoquiz.domain.models.Level;
+import flat56.kazlogoquiz.domain.models.Logo;
+import flat56.kazlogoquiz.domain.persistable.DataStateHandler;
 
 /**
  * Created by MusMB on 07.04.2016.
@@ -32,6 +32,7 @@ public class DataParser {
     private static DataParser instance;
     private Context context;
     private Map<String, List<Level>> levelsCache = new ConcurrentHashMap<>();
+    private DataStateHandler dataStateHandler;
 
     private DataParser() {
     }
@@ -41,7 +42,8 @@ public class DataParser {
         if (instance == null) {
             instance = new DataParser();
         }
-        instance.setContext(context);
+        instance.setContext(context.getApplicationContext());
+        instance.setDataStateHandler(DataStateHandler.getInstance(context));
         return instance;
     }
 
@@ -54,8 +56,8 @@ public class DataParser {
 
     public List<Level> getLevels() {
         Gson gson = new Gson();
-        Type listType = new TypeToken<List<Level>>() {
-        }.getType();
+        Type listType = new TypeToken<List<Level>>() {}.getType();
+
         List<Level> gsonObj;
         try {
             gsonObj = gson.fromJson(readFile(), listType);
@@ -63,9 +65,15 @@ public class DataParser {
             Log.i(DataParser.class.getName(), e.getMessage());
             return null;
         }
+
         for (Level level : gsonObj) {
-            Stream.of(level.getLogos()).forEach(logo -> logo.setLevel(level));
+            List<Logo> logos = level.getLogos();
+            for (int i = 0; i < logos.size(); i++) {
+                Logo logo = logos.get(i);
+                logo.setLevel(level);
+            }
         }
+
         return gsonObj;
     }
 
@@ -75,8 +83,29 @@ public class DataParser {
             if (levels != null) levelsCache.put(LEVELS_CACHE_KEY, levels);
             else return Collections.emptyList();
         }
-        return levelsCache.get(LEVELS_CACHE_KEY);
+
+        List<Level> levels = levelsCache.get(LEVELS_CACHE_KEY);
+        for (Level level : levels) {
+            level.setPoints(dataStateHandler.getLevelPoints(level.getId()));
+
+            List<Logo> logos = level.getLogos();
+            int answeredCount = 0;
+            for (int i = 0; i < logos.size(); i++) {
+                Logo logo = logos.get(i);
+                logo.setLevel(level);
+                boolean logoAnswered = dataStateHandler.isAnsweredLogo(logo.getId());
+                logo.setAnswered(logoAnswered);
+                if(logoAnswered) answeredCount++;
+            }
+            level.setLogosFound(answeredCount);
+            level.setOpened(dataStateHandler.isOpenedLevel(level.getId()));
+
+        }
+
+        return levels;
     }
+
+
 
     public Context getContext() {
         return context;
@@ -84,5 +113,9 @@ public class DataParser {
 
     public void setContext(Context context) {
         this.context = context;
+    }
+
+    public void setDataStateHandler(DataStateHandler dataStateHandler) {
+        this.dataStateHandler = dataStateHandler;
     }
 }

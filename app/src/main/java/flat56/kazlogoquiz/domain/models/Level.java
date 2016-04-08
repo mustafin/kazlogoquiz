@@ -13,6 +13,7 @@ public class Level {
     private int logosFound;
     private boolean opened;
     private List<Logo> logos;
+    private int leftToOpen;
 
     public Level(int id, int points, int logosFound, boolean opened) {
         this.id = id;
@@ -84,5 +85,13 @@ public class Level {
                 ", opened=" + opened +
                 ", logos=" + logos +
                 '}';
+    }
+
+    public int getLeftToOpen() {
+        return leftToOpen;
+    }
+
+    public void setLeftToOpen(int leftToOpen) {
+        this.leftToOpen = leftToOpen;
     }
 }

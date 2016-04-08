@@ -49,6 +49,7 @@ public class LevelsAdapter extends ArrayAdapter<Level> {
         if(level.isOpened()) {
             ProgressBar progress = (ProgressBar) convertView.findViewById(R.id.progressBar);
             TextView progressText = (TextView) convertView.findViewById(R.id.progressText);
+            TextView tengeCount = (TextView) convertView.findViewById(R.id.tenge_count);
             progress.setProgress(level.getLogosFound() * 100 / level.getLogos().size());
             progressText.setText(String.format(
                     Locale.getDefault(),
@@ -56,10 +57,10 @@ public class LevelsAdapter extends ArrayAdapter<Level> {
                     level.getLogosFound(),
                     level.getLogos().size())
             );
+            tengeCount.setText(String.format(Locale.getDefault(), "%d", level.getPoints()));
         }else{
             TextView guessMore = (TextView) convertView.findViewById(R.id.guess_more_text);
-            //TODO change hardcoded "left to unlock" value
-            guessMore.setText(context.getString(R.string.guess_more, 10));
+            guessMore.setText(context.getString(R.string.guess_more, level.getLeftToOpen()));
         }
         return convertView;
     }

@@ -4,6 +4,7 @@ import com.annimon.stream.Stream;
 
 import java.util.List;
 
+import flat56.kazlogoquiz.AppConsts;
 import flat56.kazlogoquiz.domain.models.Level;
 import flat56.kazlogoquiz.domain.models.Logo;
 
@@ -40,5 +41,24 @@ public class DataUtils {
         }
         return null;
     }
+
+    public static int leftToOpenLevel(List<Level> data, int levelId){
+        int curFound = 0;
+        int curTotal = 0;
+        int toOpen = 0;
+        int left = 0;
+        for (int i = 1; i < data.size(); i++) {
+            Level prev = data.get(i - 1);
+            Level cur = data.get(i);
+            curFound += prev.getLogosFound();
+            curTotal += prev.getLogos().size();
+            toOpen = curTotal * AppConsts.PERCENTS_FOUND_TO_OPEN / 100;
+            if(curFound < toOpen) left = toOpen - curFound;
+            if(cur.getId() == levelId || !cur.isOpened()) break;
+
+        }
+        return left;
+    }
+
 
 }

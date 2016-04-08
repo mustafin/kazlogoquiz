@@ -20,7 +20,6 @@ import flat56.kazlogoquiz.activities.LogosActivity;
 import flat56.kazlogoquiz.domain.DataParser;
 import flat56.kazlogoquiz.domain.models.Level;
 import flat56.kazlogoquiz.domain.models.Logo;
-import flat56.kazlogoquiz.utils.DataUtils;
 
 import static flat56.kazlogoquiz.utils.DataUtils.*;
 
@@ -53,7 +52,7 @@ public class DescFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         DataParser parser = DataParser.getInstance(getActivity().getBaseContext());
-        data = parser.getLevels();
+        data = parser.getCachedLevels();
 
         if (getArguments() != null) {
             levelId = getArguments().getInt(LogosActivity.LEVEL_EXTRA);
@@ -72,7 +71,6 @@ public class DescFragment extends Fragment {
 
         TextView title = (TextView) view.findViewById(R.id.title);
         TextView description = (TextView) view.findViewById(R.id.description);
-        Button back = (Button) view.findViewById(R.id.back);
         LinearLayout points = (LinearLayout) view.findViewById(R.id.points);
         points.setClipChildren(false);
         for (int i = 0; i < logo.getPoints(); i++) {
@@ -83,12 +81,6 @@ public class DescFragment extends Fragment {
             point.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.icon_tenge_medium));
             points.addView(point);
 
-//
-//            ArcTranslateAnimation anim = new ArcTranslateAnimation(0, 100 , 0, -100);
-//            anim.setDuration(500);
-//            anim.setFillAfter(true);
-//
-//            point.startAnimation(anim);
         }
 
         title.setText(logo.getCorrect());

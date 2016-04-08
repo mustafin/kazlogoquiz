@@ -47,8 +47,7 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:gravity="center_vertical"
-                android:text="22" />
+                android:gravity="center_vertical" />
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
 

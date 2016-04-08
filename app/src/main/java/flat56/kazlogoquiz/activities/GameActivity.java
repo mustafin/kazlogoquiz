@@ -6,8 +6,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.List;
+import java.util.Locale;
 
 import flat56.kazlogoquiz.R;
 import flat56.kazlogoquiz.activities.fragments.DescFragment;
@@ -24,6 +26,7 @@ public class GameActivity extends BaseActivity implements OnFragmentInteractionL
     private int logoId;
     private Logo logo;
     private List<Level> data;
+    private TextView total;
 
     @Override
     @LayoutRes
@@ -34,10 +37,7 @@ public class GameActivity extends BaseActivity implements OnFragmentInteractionL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
+        total = (TextView) findViewById(R.id.total_tenge);
 
         data = getLevels();
 
@@ -89,15 +89,12 @@ public class GameActivity extends BaseActivity implements OnFragmentInteractionL
         transaction.setCustomAnimations(R.anim.abc_fade_in, R.anim.abc_fade_out);
         transaction.replace(R.id.fragment, descFragment);
         transaction.commit();
+        total.setText(String.format(Locale.getDefault(), "%d", getTotal()));
     }
-
-
 
     public void goBack(View v){
         super.onBackPressed();
-
     }
-
 
 
 }

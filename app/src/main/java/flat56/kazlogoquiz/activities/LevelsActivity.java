@@ -6,11 +6,15 @@ import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import flat56.kazlogoquiz.AppConsts;
 import flat56.kazlogoquiz.R;
 import flat56.kazlogoquiz.activities.adapters.LevelsAdapter;
+import flat56.kazlogoquiz.activities.asynctasks.LoadLevelsAsync;
 import flat56.kazlogoquiz.domain.models.Level;
 
-import static flat56.kazlogoquiz.AppConsts.MY_PREFS_NAME;
 
 /**
  * Created by Murat on 27.01.2015.
@@ -30,7 +34,7 @@ public class LevelsActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        adapter = new LevelsAdapter(this, R.layout.row, getLevels());
+        adapter = new LevelsAdapter(this, R.layout.row, new ArrayList<>());
         list = (ListView)findViewById(R.id.list);
         list.setAdapter(adapter);
 
@@ -43,21 +47,40 @@ public class LevelsActivity extends BaseActivity {
         });
     }
 
-    private void readPrefs(){
-        SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
-        String restoredText = prefs.getString("text", null);
-        if (restoredText != null) {
-            String name = prefs.getString("name", "No name defined");//"No name defined" is the default value.
-            int idName = prefs.getInt("idName", 0); //0 is the default value.
+    @Override
+    protected void onResume() {
+        super.onResume();
+        LoadLevelsAsync loadLevels = new LoadLevelsAsync(this,
+        list -> {
+
+            setLeftToOpenNextLevel(list);
+
+            adapter.clear();
+            adapter.addAll(list);
+            adapter.notifyDataSetChanged();
+        });
+        loadLevels.execute();
+    }
+
+    public void setLeftToOpenNextLevel(List<Level> data){
+        int curFound = 0;
+        int curTotal = 0;
+        int toOpen = 0;
+        int left = 0;
+        data.get(0).setOpened(true);
+        for (int i = 1; i < data.size(); i++) {
+            Level prev = data.get(i - 1);
+            Level cur = data.get(i);
+            curFound += prev.getLogosFound();
+            curTotal += prev.getLogos().size();
+
+            toOpen = curTotal * AppConsts.PERCENTS_FOUND_TO_OPEN / 100;
+            if(curFound < toOpen) left = toOpen - curFound;
+            else if(!cur.isOpened()) {
+                cur.setOpened(true);
+            }
+            cur.setLeftToOpen(left);
         }
+
     }
-
-    private void savePrefs(){
-        SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
-        editor.putString("name", "Elena");
-        editor.putInt("idName", 12);
-
-        editor.commit();
-    }
-
 }
