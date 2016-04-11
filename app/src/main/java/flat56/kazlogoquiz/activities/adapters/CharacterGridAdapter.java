@@ -14,6 +14,7 @@ import java.util.List;
 
 import flat56.kazlogoquiz.R;
 import flat56.kazlogoquiz.activities.views.AnswerGrid;
+import flat56.kazlogoquiz.domain.models.Hint;
 import flat56.kazlogoquiz.utils.ViewIdGenerator;
 
 /**

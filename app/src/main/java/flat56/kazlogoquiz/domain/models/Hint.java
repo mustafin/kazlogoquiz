@@ -13,7 +13,7 @@ public abstract class Hint {
 
     }
 
-    protected abstract String getHintType();
+    public abstract void restoreViewState();
 
     protected abstract void onSaveUsed(SharedPreferences preferences);
 

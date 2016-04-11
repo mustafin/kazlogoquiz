@@ -33,7 +33,7 @@ public class DirectoryAdapter extends ArrayAdapter<Logo> implements SectionIndex
         this.context = context;
         this.logos = objects;
 
-        mapIndex = new LinkedHashMap<>();
+        mapIndex = new LinkedHashMap<>(25);
 
         for (int x = 0; x < objects.size(); x++) {
             Logo fruit = objects.get(x);
