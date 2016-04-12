@@ -3,14 +3,19 @@ package flat56.kazlogoquiz.activities.fragments;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
+import com.afollestad.materialdialogs.MaterialDialog;
 
 import java.util.List;
 
@@ -19,6 +24,7 @@ import flat56.kazlogoquiz.activities.LogosActivity;
 import flat56.kazlogoquiz.activities.adapters.CharacterGridAdapter;
 import flat56.kazlogoquiz.activities.views.AnswerGrid;
 import flat56.kazlogoquiz.domain.DataParser;
+import flat56.kazlogoquiz.domain.models.DescHint;
 import flat56.kazlogoquiz.domain.models.Level;
 import flat56.kazlogoquiz.domain.models.Logo;
 import flat56.kazlogoquiz.domain.persistable.DataStateHandler;
@@ -26,7 +32,7 @@ import flat56.kazlogoquiz.utils.DataUtils;
 
 import static flat56.kazlogoquiz.utils.DataUtils.findLogo;
 
-public class GameFragment extends Fragment {
+public class GameFragment extends DialogFragment {
 
     public static final String LOGO_EXTRA = "LOGO_EXTRA";
     private Logo logo;
@@ -60,7 +66,7 @@ public class GameFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        DataParser parser = DataParser.getInstance(getActivity().getBaseContext());
+        DataParser parser = DataParser.getInstance(context);
         data = parser.getCachedLevels();
 
         if (getArguments() != null) {
@@ -72,12 +78,15 @@ public class GameFragment extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        new DescHint(getActivity()).use(2, aBoolean -> Log.i("TAG", "CharacterGridAdapter: "+aBoolean));
+
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-
-        if (context == null)
-            context = getActivity().getBaseContext();
 
         View view = inflater.inflate(R.layout.fragment_game, container, false);
 
@@ -106,6 +115,8 @@ public class GameFragment extends Fragment {
             answerGrid.setLastBtnAddListener(this::checkAnswer);
 
         }
+
+
         return view;
 
     }
@@ -128,6 +139,8 @@ public class GameFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        this.context = context;
+
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {

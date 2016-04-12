@@ -1,6 +1,7 @@
 package flat56.kazlogoquiz.activities.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
@@ -14,6 +15,7 @@ import java.util.List;
 
 import flat56.kazlogoquiz.R;
 import flat56.kazlogoquiz.activities.views.AnswerGrid;
+import flat56.kazlogoquiz.domain.models.DescHint;
 import flat56.kazlogoquiz.domain.models.Hint;
 import flat56.kazlogoquiz.utils.ViewIdGenerator;
 
@@ -31,11 +33,9 @@ public class CharacterGridAdapter extends BaseAdapter {
     private AnswerGrid answerGrid;
 
     private int rows = 0;
-    private GridView gridView;
 
     public CharacterGridAdapter(Context context, GridView gridView, String chars, int rows) {
         this.context = context;
-        this.gridView = gridView;
         this.chars = chars;
         this.rows = rows;
         this.GAME_BUTTON_SIZE = (int) context.getResources().getDimension(R.dimen.game_button_width);
@@ -45,7 +45,6 @@ public class CharacterGridAdapter extends BaseAdapter {
         for (int i = 0; i < chars.length(); i++) {
             characterList.add(chars.charAt(i));
         }
-
         if (rows == 0) {
             gridView.setNumColumns(8);
             this.rows = (int) Math.ceil(chars.length() / 8.0);
