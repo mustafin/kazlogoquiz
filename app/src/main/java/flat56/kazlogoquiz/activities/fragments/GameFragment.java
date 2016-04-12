@@ -1,6 +1,7 @@
 package flat56.kazlogoquiz.activities.fragments;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -74,13 +75,6 @@ public class GameFragment extends DialogFragment {
             logoId = getArguments().getInt(LOGO_EXTRA);
             logo = findLogo(data, levelId, logoId);
         }
-
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        new DescHint(getActivity()).use(2, aBoolean -> Log.i("TAG", "CharacterGridAdapter: "+aBoolean));
 
     }
 

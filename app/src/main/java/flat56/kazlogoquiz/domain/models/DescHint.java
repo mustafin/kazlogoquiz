@@ -1,8 +1,7 @@
 package flat56.kazlogoquiz.domain.models;
 
+import android.app.Activity;
 import android.content.Context;
-
-import com.afollestad.materialdialogs.MaterialDialog;
 
 import flat56.kazlogoquiz.domain.persistable.DataStateHandler;
 
@@ -13,15 +12,13 @@ public class DescHint extends Hint{
 
     private static final int COST = 8;
 
-
-
-    public DescHint(Context context) {
-        super(context);
+    public DescHint(Activity activity) {
+        super(activity);
     }
 
     @Override
     public int cost() {
-        return 0;
+        return COST;
     }
 
     @Override

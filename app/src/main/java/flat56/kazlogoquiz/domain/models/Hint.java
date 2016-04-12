@@ -1,6 +1,6 @@
 package flat56.kazlogoquiz.domain.models;
 
-import android.content.Context;
+import android.app.Activity;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
@@ -13,7 +13,7 @@ import flat56.kazlogoquiz.domain.persistable.DataStateHandler;
  */
 public abstract class Hint {
 
-    protected Context context;
+    protected Activity activity;
     private DataStateHandler stateHandler;
 
     /**
@@ -25,9 +25,9 @@ public abstract class Hint {
     private String positive;
     private String negative;
 
-    public Hint(Context context) {
-        this.context = context.getApplicationContext();
-        this.stateHandler = DataStateHandler.getInstance(context);
+    public Hint(Activity activity) {
+        this.activity = activity;
+        this.stateHandler = DataStateHandler.getInstance(this.activity);
     }
 
     public void use(int points, SideFunction<Boolean> onComplete) {
@@ -46,7 +46,7 @@ public abstract class Hint {
 
     protected MaterialDialog.Builder hintDialog(String title, String desc) {
         if (!resourcesInitialized()) initResources();
-        MaterialDialog.Builder builder = new MaterialDialog.Builder(context);
+        MaterialDialog.Builder builder = new MaterialDialog.Builder(activity);
         builder.title(title).content(desc)
                 .positiveText(positive).negativeText(negative);
         return builder;
@@ -54,7 +54,7 @@ public abstract class Hint {
 
     protected MaterialDialog.Builder notEnoughDialog(String title, String desc) {
         if (!resourcesInitialized()) initResources();
-        MaterialDialog.Builder builder = new MaterialDialog.Builder(context);
+        MaterialDialog.Builder builder = new MaterialDialog.Builder(activity);
         builder.title(title).content(desc)
                 .positiveText(positive);
         return builder;
@@ -62,11 +62,11 @@ public abstract class Hint {
 
 
     private void initResources() {
-        defaultDialogTitle = context.getString(R.string.default_hint_title);
-        defaultDialogDesc = context.getString(R.string.default_hint_desc, cost());
-        notEnoughPoints = context.getString(R.string.not_enough_ponts);
-        positive = context.getString(R.string.yes);
-        negative = context.getString(R.string.no);
+        defaultDialogTitle = activity.getString(R.string.default_hint_title);
+        defaultDialogDesc = activity.getString(R.string.default_hint_desc, cost());
+        notEnoughPoints = activity.getString(R.string.not_enough_ponts);
+        positive = activity.getString(R.string.yes);
+        negative = activity.getString(R.string.no);
     }
 
     private boolean resourcesInitialized() {
