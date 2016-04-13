@@ -35,5 +35,6 @@
     <dimen name="dir_imag_margin">30dp</dimen>
     <dimen name="row_card_elevation">4dp</dimen>
     <dimen name="back_button_width">250dp</dimen>
+    <dimen name="text_size_large_material">22sp</dimen>
 
 </resources>

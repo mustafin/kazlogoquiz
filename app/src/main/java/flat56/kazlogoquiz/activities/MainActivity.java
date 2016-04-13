@@ -2,24 +2,14 @@ package flat56.kazlogoquiz.activities;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.StateListDrawable;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 
-import java.io.IOException;
-
 import flat56.kazlogoquiz.R;
-import flat56.kazlogoquiz.domain.DataParser;
 
 
 public class MainActivity extends Activity {

@@ -1,22 +1,15 @@
 package flat56.kazlogoquiz.activities.fragments;
 
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-
-import com.afollestad.materialdialogs.MaterialDialog;
 
 import java.util.List;
 
@@ -25,7 +18,6 @@ import flat56.kazlogoquiz.activities.LogosActivity;
 import flat56.kazlogoquiz.activities.adapters.CharacterGridAdapter;
 import flat56.kazlogoquiz.activities.views.AnswerGrid;
 import flat56.kazlogoquiz.domain.DataParser;
-import flat56.kazlogoquiz.domain.models.DescHint;
 import flat56.kazlogoquiz.domain.models.Level;
 import flat56.kazlogoquiz.domain.models.Logo;
 import flat56.kazlogoquiz.domain.persistable.DataStateHandler;

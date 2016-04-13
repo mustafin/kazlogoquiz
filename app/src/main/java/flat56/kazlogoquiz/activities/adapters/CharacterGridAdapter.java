@@ -1,10 +1,8 @@
 package flat56.kazlogoquiz.activities.adapters;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -15,8 +13,6 @@ import java.util.List;
 
 import flat56.kazlogoquiz.R;
 import flat56.kazlogoquiz.activities.views.AnswerGrid;
-import flat56.kazlogoquiz.domain.models.DescHint;
-import flat56.kazlogoquiz.domain.models.Hint;
 import flat56.kazlogoquiz.utils.ViewIdGenerator;
 
 /**

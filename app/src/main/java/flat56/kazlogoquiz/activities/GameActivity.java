@@ -4,12 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBar;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-
-import com.afollestad.materialdialogs.MaterialDialog;
 
 import java.util.List;
 import java.util.Locale;
@@ -18,7 +14,6 @@ import flat56.kazlogoquiz.R;
 import flat56.kazlogoquiz.activities.fragments.DescFragment;
 import flat56.kazlogoquiz.activities.fragments.GameFragment;
 import flat56.kazlogoquiz.activities.fragments.OnFragmentInteractionListener;
-import flat56.kazlogoquiz.domain.models.DescHint;
 import flat56.kazlogoquiz.domain.models.Level;
 import flat56.kazlogoquiz.domain.models.Logo;
 import flat56.kazlogoquiz.utils.DataUtils;
@@ -90,7 +85,7 @@ public class GameActivity extends BaseActivity implements OnFragmentInteractionL
     public void onFragmentAction() {
         DescFragment descFragment = DescFragment.newInstance(levelId, logoId);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.setCustomAnimations(R.anim.abc_fade_in, R.anim.abc_fade_out);
+        transaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
         transaction.replace(R.id.fragment, descFragment);
         transaction.commit();
         total.setText(String.format(Locale.getDefault(), "%d", getTotal()));

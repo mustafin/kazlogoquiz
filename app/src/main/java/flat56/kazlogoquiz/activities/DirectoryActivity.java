@@ -4,10 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -17,7 +13,6 @@ import com.annimon.stream.Stream;
 import java.util.ArrayList;
 import java.util.List;
 
-import flat56.kazlogoquiz.Dummy;
 import flat56.kazlogoquiz.R;
 import flat56.kazlogoquiz.activities.adapters.DirectoryAdapter;
 import flat56.kazlogoquiz.domain.models.Level;

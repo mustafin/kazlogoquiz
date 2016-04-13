@@ -6,7 +6,6 @@ import android.support.annotation.LayoutRes;
 import android.widget.GridView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import flat56.kazlogoquiz.R;
 import flat56.kazlogoquiz.activities.adapters.LogosAdapter;

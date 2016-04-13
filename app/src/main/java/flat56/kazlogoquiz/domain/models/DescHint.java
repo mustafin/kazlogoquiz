@@ -1,7 +1,6 @@
 package flat56.kazlogoquiz.domain.models;
 
 import android.app.Activity;
-import android.content.Context;
 
 import flat56.kazlogoquiz.domain.persistable.DataStateHandler;
 
@@ -30,4 +29,5 @@ public class DescHint extends Hint{
     protected void onSave(DataStateHandler handler) {
 
     }
+
 }
