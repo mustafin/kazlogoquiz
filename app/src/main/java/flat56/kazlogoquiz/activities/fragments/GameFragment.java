@@ -113,9 +113,9 @@ public class GameFragment extends DialogFragment {
                 logo.setAnswered(true);
                 DataStateHandler dataStateHandler = DataStateHandler.getInstance(context);
                 dataStateHandler.addLevelPoints(levelId, logo.getPoints());
-                dataStateHandler.answerLogo(logoId);
+                dataStateHandler.saveLogoAnswered(logoId);
                 int i = DataUtils.leftToOpenLevel(data, levelId);
-                if(i == 0) dataStateHandler.openLevel(levelId);
+                if(i == 0) dataStateHandler.saveLevelOpened(levelId);
                 mListener.onFragmentAction();
             } else
                 answerGrid.animateShake();

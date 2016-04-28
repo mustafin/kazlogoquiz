@@ -13,6 +13,7 @@ import flat56.kazlogoquiz.domain.persistable.DataStateHandler;
  */
 public abstract class Hint {
 
+    protected final Logo logo;
     protected Activity activity;
     private DataStateHandler stateHandler;
 
@@ -25,8 +26,9 @@ public abstract class Hint {
     private String positive;
     private String negative;
 
-    public Hint(Activity activity) {
+    public Hint(Activity activity, Logo logo) {
         this.activity = activity;
+        this.logo = logo;
         this.stateHandler = DataStateHandler.getInstance(this.activity);
     }
 

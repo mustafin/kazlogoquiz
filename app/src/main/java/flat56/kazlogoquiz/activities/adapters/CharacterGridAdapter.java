@@ -90,10 +90,6 @@ public class CharacterGridAdapter extends BaseAdapter {
     }
 
 //    @Override
-//    public void notifyDataSetChanged() {
-//        buttonList.clear();
-//        super.notifyDataSetChanged();
-//    }
 
     public View.OnClickListener buttonClick(int position, Button button) {
         return v -> {
@@ -118,5 +114,9 @@ public class CharacterGridAdapter extends BaseAdapter {
 
     public void setAnswerGrid(AnswerGrid answerGrid) {
         this.answerGrid = answerGrid;
+    }
+
+    public List<Character> getCharacterList() {
+        return characterList;
     }
 }

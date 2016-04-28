@@ -21,5 +21,6 @@
     <string name="yes">Да</string>
     <string name="no">Нет</string>
     <string name="agree">Хорошо</string>
+    <string name="desc_title">Подсказка</string>
 
 </resources>

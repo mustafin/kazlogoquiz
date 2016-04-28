@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import flat56.kazlogoquiz.AppConsts;
+import flat56.kazlogoquiz.domain.models.Logo;
 
 /**
  * Created by MusMB on 08.04.2016.
@@ -14,25 +15,12 @@ public class DataStateHandler {
     private SharedPreferences preferences;
     private Context context;
 
-    private DataStateHandler(){}
-
-    public static DataStateHandler getInstance(Context context){
-        if (instance == null) {
-            instance = new DataStateHandler();
-        }
-        instance.setContext(context.getApplicationContext());
-        instance.setPreferences(context.getApplicationContext()
-                .getSharedPreferences(AppConsts.MY_PREFS_NAME, Context.MODE_PRIVATE));
-        return instance;
-    }
-
-    public void setContext(Context context) {
-        this.context = context;
-    }
-
-    public void answerLogo(int logoId){
+    /**
+     * Levels
+     */
+    public void saveLevelOpened(int levelId){
         SharedPreferences.Editor edit = preferences.edit();
-        edit.putBoolean(AppConsts.LOGO_PREFIX + logoId, true);
+        edit.putBoolean(AppConsts.LEVEL_OPENED_PREFIX + levelId, true);
         edit.apply();
     }
 
@@ -47,12 +35,13 @@ public class DataStateHandler {
         edit.apply();
     }
 
-    public void openLevel(int levelId){
-        SharedPreferences.Editor edit = preferences.edit();
-        edit.putBoolean(AppConsts.LEVEL_OPENED_PREFIX + levelId, true);
-        edit.apply();
+    public boolean isOpenedLevel(int levelId){
+        return preferences.getBoolean(AppConsts.LEVEL_OPENED_PREFIX + levelId, false);
     }
 
+    /**
+     * Points
+     */
     public int getLevelPoints(int levelId){
         return preferences.getInt(AppConsts.LEVEL_PREFIX + levelId, 0);
     }
@@ -61,15 +50,56 @@ public class DataStateHandler {
         return preferences.getInt(AppConsts.USER_TOTAL_SCORE, 0);
     }
 
+    /**
+     * Logos
+     */
+    public void saveLogoAnswered(int logoId){
+        SharedPreferences.Editor edit = preferences.edit();
+        edit.putBoolean(AppConsts.LOGO_PREFIX + logoId, true);
+        edit.apply();
+    }
+
     public boolean isAnsweredLogo(int logoId) {
         return preferences.getBoolean(AppConsts.LOGO_PREFIX + logoId, false);
     }
 
-    public boolean isOpenedLevel(int levelId){
-        return preferences.getBoolean(AppConsts.LEVEL_OPENED_PREFIX + levelId, false);
+    /**
+     * Hints
+     */
+    public void saveHintUsed(int logoId, String hintPrefix) {
+        SharedPreferences.Editor edit = preferences.edit();
+        edit.putBoolean("hint." + hintPrefix + logoId, true);
+        edit.apply();
+    }
+
+    public boolean isHintUsed(int logoId, String hintPrefix) {
+        return preferences.getBoolean("hint." + hintPrefix + logoId, false);
+    }
+
+
+    /**
+     * Initializes
+     */
+    private DataStateHandler(){}
+
+    public static DataStateHandler getInstance(Context context){
+        if (instance == null) {
+            instance = new DataStateHandler();
+        }
+        instance.setContext(context.getApplicationContext());
+        instance.setPreferences(context.getApplicationContext()
+                .getSharedPreferences(AppConsts.MY_PREFS_NAME, Context.MODE_PRIVATE));
+        return instance;
     }
 
     public void setPreferences(SharedPreferences preferences) {
         this.preferences = preferences;
     }
+
+    public void setContext(Context context) {
+        this.context = context;
+    }
+
+
+
 }

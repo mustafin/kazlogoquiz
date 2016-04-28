@@ -12,46 +12,50 @@ public class Logo {
     private String correctKz;
     private String charsRu;
     private String charsKz;
-    private String description;
+    private String descriptionRu;
+    private String descriptionKz;
     private int points;
     private boolean answered;
 
     private Level level;
 
-    public Logo(int id, String path, String pathComplete, String correctRu, String correctKz, String charsRu, String charsKz, String description) {
+    public Logo(int id, String path, String pathComplete, String correctRu, String correctKz, String charsRu, String charsKz, String descriptionRu, String descriptionKz) {
         this.path = path;
         this.pathComplete = pathComplete;
         this.correctRu = correctRu;
         this.correctKz = correctKz;
         this.charsRu = charsRu;
         this.charsKz = charsKz;
-        this.description = description;
+        this.descriptionRu = descriptionRu;
+        this.descriptionKz = descriptionKz;
         this.id = id;
 
     }
 
     public Logo(int id, String path, String pathComplete, String correctRu, String correctKz,
-                String charsRu, String charsKz, String description, int points) {
+                String charsRu, String charsKz, String descriptionRu, String descriptionKz, int points) {
         this.path = path;
         this.pathComplete = pathComplete;
         this.correctRu = correctRu;
         this.correctKz = correctKz;
         this.charsRu = charsRu;
         this.charsKz = charsKz;
-        this.description = description;
+        this.descriptionRu = descriptionRu;
+        this.descriptionKz = descriptionKz;
         this.points = points;
         this.id = id;
     }
 
     public Logo(int id, String path, String pathComplete, String correctRu, String correctKz,
-                String charsRu, String charsKz, String description, int points, boolean answered) {
+                String charsRu, String charsKz, String descriptionRu,String descriptionKz,  int points, boolean answered) {
         this.path = path;
         this.pathComplete = pathComplete;
         this.correctRu = correctRu;
         this.correctKz = correctKz;
         this.charsRu = charsRu;
         this.charsKz = charsKz;
-        this.description = description;
+        this.descriptionRu = descriptionRu;
+        this.descriptionKz = descriptionKz;
         this.points = points;
         this.answered = answered;
         this.id = id;
@@ -119,12 +123,16 @@ public class Logo {
         this.points = points;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDescriptionRu() {
+        return descriptionRu;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDescriptionRu(String description) {
+        this.descriptionRu = description;
+    }
+
+    public String getDescription() {
+        return descriptionRu;
     }
 
     public boolean isAnswered() {
@@ -157,10 +165,8 @@ public class Logo {
                 "path='" + path + '\'' +
                 ", pathComplete='" + pathComplete + '\'' +
                 ", correctRu='" + correctRu + '\'' +
-                ", correctKz='" + correctKz + '\'' +
                 ", charsRu='" + charsRu + '\'' +
-                ", charsKz='" + charsKz + '\'' +
-                ", description='" + description + '\'' +
+                ", descriptionRu='" + descriptionRu + '\'' +
                 ", points=" + points +
                 ", answered=" + answered +
                 '}';
@@ -172,5 +178,13 @@ public class Logo {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getDescriptionKz() {
+        return descriptionKz;
+    }
+
+    public void setDescriptionKz(String descriptionKz) {
+        this.descriptionKz = descriptionKz;
     }
 }
