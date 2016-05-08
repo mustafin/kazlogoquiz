@@ -18,8 +18,10 @@ import flat56.kazlogoquiz.activities.LogosActivity;
 import flat56.kazlogoquiz.activities.adapters.CharacterGridAdapter;
 import flat56.kazlogoquiz.activities.views.AnswerGrid;
 import flat56.kazlogoquiz.domain.DataParser;
+import flat56.kazlogoquiz.domain.models.Hint;
 import flat56.kazlogoquiz.domain.models.Level;
 import flat56.kazlogoquiz.domain.models.Logo;
+import flat56.kazlogoquiz.domain.models.OpenHint;
 import flat56.kazlogoquiz.domain.persistable.DataStateHandler;
 import flat56.kazlogoquiz.utils.DataUtils;
 
@@ -100,6 +102,12 @@ public class GameFragment extends DialogFragment {
 //        answerGrid.setBtnAddListener(st -> Log.i("CURR WORD IS", st));
             answerGrid.setLastBtnAddListener(this::checkAnswer);
 
+
+
+            Hint hint = new OpenHint(getActivity(), logo, answerGrid);
+            hint.use(100, (t) -> {
+
+            });
         }
 
 

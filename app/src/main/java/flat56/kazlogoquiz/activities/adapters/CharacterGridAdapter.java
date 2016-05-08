@@ -21,11 +21,11 @@ import flat56.kazlogoquiz.utils.ViewIdGenerator;
 public class CharacterGridAdapter extends BaseAdapter {
 
     private Context context;
-    //    private List<Button> buttonList;
     private List<Character> characterList;
     private String chars;
     private int GAME_BUTTON_SIZE = 0;
     private int VIEW_MARGIN = 0;
+    public static final char EMPTY_VIEW = '-';
     private AnswerGrid answerGrid;
 
     private int rows = 0;
@@ -36,7 +36,6 @@ public class CharacterGridAdapter extends BaseAdapter {
         this.rows = rows;
         this.GAME_BUTTON_SIZE = (int) context.getResources().getDimension(R.dimen.game_button_width);
         this.VIEW_MARGIN = (int) context.getResources().getDimension(R.dimen.char_view_margin);
-//        this.buttonList = new ArrayList<>(20);
         this.characterList = new ArrayList<>(15);
         for (int i = 0; i < chars.length(); i++) {
             characterList.add(chars.charAt(i));
@@ -67,21 +66,14 @@ public class CharacterGridAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Character c = characterList.get(position);
-        if (c == '-') {
+        if (c == EMPTY_VIEW) {
             convertView = new View(context);
             convertView.setLayoutParams(new AbsListView.LayoutParams(GAME_BUTTON_SIZE, GAME_BUTTON_SIZE));
 
         } else {
-            Button b = new Button(context);
-            b.setBackgroundResource(R.drawable.game_char_but_selector);
-            b.setId(ViewIdGenerator.generateViewId());
-            AbsListView.LayoutParams params = new AbsListView.LayoutParams(GAME_BUTTON_SIZE, GAME_BUTTON_SIZE);
-            b.setPadding(0, 0, 0, 0);
-            b.setLayoutParams(params);
-
+            Button b = newButton(context, GAME_BUTTON_SIZE, GAME_BUTTON_SIZE);
 
             b.setText(c.toString());
-//            buttonList.add(b);
             convertView = b;
             b.setOnClickListener(buttonClick(position, b));
         }
@@ -89,18 +81,37 @@ public class CharacterGridAdapter extends BaseAdapter {
         return convertView;
     }
 
-//    @Override
+    public static Button newButton(Context context, int width, int height){
+        Button b = new Button(context);
+        b.setBackgroundResource(R.drawable.game_char_but_selector);
+        b.setId(ViewIdGenerator.generateViewId());
+        AbsListView.LayoutParams params = new AbsListView.LayoutParams(width, height);
+        b.setPadding(0, 0, 0, 0);
+        b.setLayoutParams(params);
+        return b;
+    }
+
 
     public View.OnClickListener buttonClick(int position, Button button) {
         return v -> {
             if (answerGrid.canSwap()) {
-                characterList.set(position, '-');
+                characterList.set(position, EMPTY_VIEW);
                 notifyDataSetChanged();
                 ViewGroup parent = (ViewGroup) button.getParent();
                 parent.removeViewInLayout(button);
                 answerGrid.addButton(button, position);
             }
         };
+    }
+
+    public void removeFirstChar(Character character){
+        for (int i = 0; i < characterList.size(); i++) {
+            if(characterList.get(i) == character){
+                characterList.set(i, EMPTY_VIEW);
+                notifyDataSetChanged();
+                return;
+            }
+        }
     }
 
     public void setButton(int position, Button b) {

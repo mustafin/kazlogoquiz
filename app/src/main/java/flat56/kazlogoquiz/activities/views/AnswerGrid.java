@@ -25,6 +25,7 @@ import flat56.kazlogoquiz.activities.adapters.CharacterGridAdapter;
 /**
  * Created by MusMB on 17.03.2016.
  */
+//TODO Implement state recreation (HINTS!!!)
 public class AnswerGrid {
 
     public static final char WORDS_DELIMETER = ' ';
@@ -36,8 +37,8 @@ public class AnswerGrid {
     private List<List<Element>> elementsList;
     private List<LinearLayout> layoutRows;
     private String answer;
-    private int GAME_BUTTON_SIZE = 0;
-    private int GAME_SPACE_SIZE = 0;
+    public int GAME_BUTTON_SIZE = 0;
+    public int GAME_SPACE_SIZE = 0;
     private CharacterGridAdapter characterGridAdapter;
     private int deviceWidth;
     private OnButtonAddListener btnAddListener;
@@ -100,14 +101,27 @@ public class AnswerGrid {
         return linearLayout;
     }
 
-    public void addButton(Button b, final int fromPos) {
 
-        if (swapFirstView(b, fromPos)) {
+    /**
+     * Adds button to first empty view in AnswerGrid
+     *
+     * @param b       button
+     * @param fromPos position of Button in CharacterGridAdapter
+     */
+    public void addButton(Button b, final int fromPos) {
+        Element element = swapFirstView(b, fromPos);
+        if (element != null) {
+
             b.setOnClickListener(view -> {
-                View v = emptyView();
-                swapViewAt(b, v);
+                Element emptyElement = new Element(element.character);
+                if(swapViewAt(b, emptyElement.view)){
+                    elementsList.get(element.i).set(element.j, emptyElement);
+                }
                 characterGridAdapter.setButton(fromPos, b);
             });
+
+
+            //Apply on add listeners
             if (btnAddListener != null) {
                 btnAddListener.apply(getCurrentWord());
             }
@@ -119,6 +133,18 @@ public class AnswerGrid {
         }
     }
 
+    public void swapViewAt(Button b, final int posI, final int posJ){
+        ViewGroup parent = layoutRows.get(posI);
+        parent.removeViewAt(posJ);
+        parent.addView(b, posJ);
+
+        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) b.getLayoutParams();
+        layoutParams.setMargins(VIEW_MARGIN, 0, 0, VIEW_MARGIN);
+    }
+
+    /**
+     * @return current word in AnswerGrid
+     */
     private String getCurrentWord() {
         StringBuilder builder = new StringBuilder();
         for (LinearLayout layout : layoutRows) {
@@ -142,6 +168,13 @@ public class AnswerGrid {
         return builder.toString();
     }
 
+    /**
+     * Swaps view
+     *
+     * @param remove view to remove
+     * @param add    view to add
+     * @return true if swap was success
+     */
     private boolean swapViewAt(View remove, View add) {
         ViewGroup parent = (ViewGroup) remove.getParent();
         if (parent != null) {
@@ -155,12 +188,18 @@ public class AnswerGrid {
         return false;
     }
 
-    private boolean swapFirstView(Button swap, int prevPos) {
+    /**
+     * Swaps first view in AnswerGrid with button
+     * @param swap button
+     * @param prevPos button position in CharacterGrid
+     * @return null if swap failed
+     */
+    private Element swapFirstView(Button swap, int prevPos) {
         for (int i = 0; i < layoutRows.size(); i++) {
             LinearLayout layout = layoutRows.get(i);
             for (int j = 0; j < layout.getChildCount(); j++) {
                 View view = layout.getChildAt(j);
-                if (!(view instanceof Button) && !(view instanceof Space) && !(view instanceof TextView)) {
+                if (isView(view)) {
                     layout.removeViewAt(j);
                     layout.addView(swap, j);
 
@@ -172,11 +211,11 @@ public class AnswerGrid {
                     elementsList.get(i).set(j, element);
                     startAnim(swap);
 
-                    return true;
+                    return element;
                 }
             }
         }
-        return false;
+        return null;
     }
 
     public boolean canSwap() {
@@ -194,12 +233,8 @@ public class AnswerGrid {
     public void setCharacterGridAdapter(CharacterGridAdapter characterGridAdapter) {
         this.characterGridAdapter = characterGridAdapter;
     }
-
-    private void startAnim(View view) {
-        AnimatorSet anim = (AnimatorSet) AnimatorInflater.loadAnimator(context, R.animator.jump_in);
-
-        anim.setTarget(view);
-        anim.start();
+    public CharacterGridAdapter getCharacterGridAdapter() {
+        return characterGridAdapter;
     }
 
     private void initRowBuffer() {
@@ -253,6 +288,10 @@ public class AnswerGrid {
         this.lastBtnAddListener = lastBtnAddListener;
     }
 
+    public List<List<Element>> getElementsList() {
+        return elementsList;
+    }
+
     public void animateShake() {
         AnimatorSet anim = (AnimatorSet) AnimatorInflater.loadAnimator(context, R.animator.shake);
         anim.setTarget(parent);
@@ -268,27 +307,36 @@ public class AnswerGrid {
         return v;
     }
 
+
+    private void startAnim(View view) {
+        AnimatorSet anim = (AnimatorSet) AnimatorInflater.loadAnimator(context, R.animator.jump_in);
+        anim.setTarget(view);
+        anim.start();
+    }
+
     public interface OnButtonAddListener {
         void apply(String st);
     }
 
     public interface OnLastButtonAddListener {
+
         void apply(String st);
     }
 
-    class Element {
+    public class Element {
 
         public View view;
+
         /**
          * position in answerGrid
          */
         public int i = -1;
         public int j = -1;
-
         /**
          * position in characterGrid
          */
         public int posInCharGrid = -1;
+
         public Character character;
 
         public Element(Character character) {
@@ -296,7 +344,7 @@ public class AnswerGrid {
             view = fromElementType(character);
         }
 
-        public Element(Button button){
+        public Element(Button button) {
             this.character = button.getText().charAt(0);
             view = button;
         }
@@ -309,6 +357,7 @@ public class AnswerGrid {
         public void setCharGridPos(int pos) {
             posInCharGrid = pos;
         }
+
 
         public View fromElementType(char character) {
             View view;
@@ -347,5 +396,10 @@ public class AnswerGrid {
 
     }
 
+    public static boolean isView(View view) {
+        return view != null && !(view instanceof Button)
+                            && !(view instanceof Space)
+                            && !(view instanceof TextView);
+    }
 
 }
